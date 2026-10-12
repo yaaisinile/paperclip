@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12.r9";
+const SCRIPT_VERSION = "2026-10-12.r10";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -578,46 +578,51 @@ async function testGemini() {
             Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         }),
     });
-    const state = classifyGemini(response);
-    if (state === "available") return mediaResult("Gemini", "yes", "", "可访问");
-    if (state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持");
-    if (state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流");
+    const verdict = classifyGemini(response);
+    if (verdict.state === "available") {
+        return mediaResult("Gemini", "yes", verdict.region || "", verdict.region ? "可访问 · 地区 " + verdict.region : "可访问");
+    }
+    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持或 IP 被风控");
+    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流");
     return mediaResult("Gemini", "unknown", "", "响应不足以确认");
 }
 
 function classifyGemini(response) {
-    if (!response) return "unknown";
+    if (!response) return { state: "unknown" };
     const status = response.status;
     const body = String(response.body || "");
     const headers = (response.response && response.response.headers) || {};
     const location = String(headers.location || headers.Location || "");
 
     // 重定向到 Gemini 不支持说明页（如 support.google.com/gemini?p=not_available）
-    if (/support\.google\.com\/gemini/i.test(location) || /[?&]p=not_available/i.test(location)) {
-        return "region-blocked";
+    if (/support\.google\.com\/gemini/i.test(location) || /[?&]p=not_available/i.test(location)
+        || /support\.google\.com\/gemini/i.test(body)) {
+        return { state: "region-blocked" };
     }
-    // 跟随重定向后落在欧盟同意页，说明地区本身支持，只是需要同意
+    // 明确的地区不支持提示文案
+    if (/not available in your (?:country|region)|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
+        return { state: "region-blocked" };
+    }
+    // 限流 / Google 风控验证页
+    if (status === 429 || /\/sorry\//i.test(location) || /unusual traffic/i.test(body)) {
+        return { state: "blocked" };
+    }
+    // 地区可用：落地页内嵌应用数据令牌（对齐 RegionRestrictionCheck 社区口径）
+    if (/45631641,null,true/.test(body)) {
+        const regionMatch = body.match(/,2,1,200,"([A-Z]{2,3})"/);
+        return { state: "available", region: regionMatch ? regionMatch[1] : "" };
+    }
+    // 欧盟/英国法定同意页：地区本身支持，仅需 cookie 同意
     if (/consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body)) {
-        return "available";
+        return { state: "available" };
     }
-    // 可用：同域重定向到应用页
-    if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location)) {
-        return "available";
+    // 落地页正常返回但缺少应用数据令牌：地区不可用，或 IP 被 Google 风控标记
+    // （Google 对被标记的机房 IP 同样返回无令牌落地页，浏览器实测会提示所在国家/地区不支持）
+    if (/<title>[^<]*gemini/i.test(body) || /gemini\.google\.com/i.test(body)) {
+        return { state: "region-blocked" };
     }
-    // 地区不支持的统一提示文案（可能直接返回，也可能在重定向后的支持页）
-    if (/not available in your country|not available in your region|your country or region|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
-        return "region-blocked";
-    }
-    // 限流
-    if (status === 429) return "blocked";
-    // 正常可访问的应用页面特征
-    if (status >= 200 && status < 300
-        && (/<title>[^<]*gemini/i.test(body)
-            || /AF_initDataCallback|__NEXT_DATA__|"title"\s*:\s*"Gemini"/i.test(body)
-            || /gemini\.google\.com\/app/i.test(body))) {
-        return "available";
-    }
-    return "unknown";
+    // 其余情形（如 Loon 未跟随重定向的 3xx、空响应等）不足以判断
+    return { state: "unknown" };
 }
 
 function render(ip, data, media) {
