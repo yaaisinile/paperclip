@@ -7,7 +7,7 @@
  * @Updated: 2026-10-12
  */
 
-const QUICK_VERSION = "2026-10-12.poc13";
+const QUICK_VERSION = "2026-10-12.poc14";
 const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/87a48129d6f14869b3ae9635b548ddd31178ee97/loon/ipquality/ipquality.js";
 const params = typeof $environment !== "undefined" && $environment.params
     ? $environment.params
@@ -26,7 +26,7 @@ const QUICK_MODULES = {
     },
     media: {
         title: "快速流媒体与 AI",
-        enabled: ["执行媒体与 AI 检测", "显示媒体与 AI 结果", "显示地区一致性"],
+        enabled: ["MediaTest", "执行媒体与 AI 检测", "显示媒体与 AI 结果", "显示地区一致性"],
     },
 };
 

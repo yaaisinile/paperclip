@@ -7,7 +7,7 @@
  * @Updated: 2026-10-12
  */
 
-const TEST_VERSION = "2026-10-12.poc13";
+const TEST_VERSION = "2026-10-12.poc14";
 const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/87a48129d6f14869b3ae9635b548ddd31178ee97/loon/ipquality/ipquality.js";
 const SESSION_KEY = "paperclip.ipquality.web.session";
 const SESSION_TTL_MS = 30 * 60 * 1000;
@@ -26,11 +26,11 @@ const MODULES = {
     stability: { title: "HTTPS 稳定性", enabled: ["测试 HTTPS 稳定性"] },
     media: {
         title: "流媒体与 AI",
-        enabled: ["执行媒体与 AI 检测", "显示媒体与 AI 结果"],
+        enabled: ["MediaTest", "执行媒体与 AI 检测", "显示媒体与 AI 结果"],
     },
     regions: {
         title: "地区一致性",
-        enabled: ["执行媒体与 AI 检测", "显示地区一致性"],
+        enabled: ["MediaTest", "执行媒体与 AI 检测", "显示地区一致性"],
     },
     status: { title: "数据状态", enabled: ["显示数据状态"] },
 };
@@ -67,10 +67,10 @@ function runModule(session) {
         }
 
         const optionStore = {
-            read(label) {
-                if (String(label || "") === "隐藏 IP") return maskIP ? "true" : "false";
-                return moduleConfig.enabled.indexOf(String(label || "")) >= 0 ? "true" : "false";
-            },
+        read(label) {
+            if (String(label || "") === "MaskIP") return maskIP ? "true" : "false";
+            return moduleConfig.enabled.indexOf(String(label || "")) >= 0 ? "true" : "false";
+        },
             write() {
                 return false;
             },
