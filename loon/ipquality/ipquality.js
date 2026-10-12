@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12.r14";
+const SCRIPT_VERSION = "2026-10-12 17:24 (r15)";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -581,53 +581,55 @@ async function testGemini() {
         },
     });
     const verdict = classifyGemini(response);
+    const diag = verdict.diag || "";
     if (verdict.state === "available") {
-        return mediaResult("Gemini", "yes", verdict.region || "", verdict.region ? "可访问 · 地区 " + verdict.region : "可访问");
+        return mediaResult("Gemini", "yes", "", "解锁 · " + diag);
     }
-    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持" + (verdict.region ? " · " + verdict.region : "或 IP 被风控"));
-    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流");
-    return mediaResult("Gemini", "unknown", "", "响应不足以确认" + (verdict.region ? " · 落地页地区 " + verdict.region : ""));
+    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + diag);
+    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流 · " + diag);
+    return mediaResult("Gemini", "unknown", "", "响应不足以确认 · " + diag);
 }
 
 function classifyGemini(response) {
-    if (!response) return { state: "unknown" };
+    if (!response) return { state: "unknown", diag: "no-response" };
     const status = response.status;
     const body = String(response.body || "");
     const headers = (response.response && response.response.headers) || {};
     const location = String(headers.location || headers.Location || "");
 
-    // 重要：令牌 45631641 是 Google 在“每个” Gemini 页面都嵌入的全局功能标志
-    // （形如 \"45631641\":true 或 45631641,null,true），与出口国家无关 —— 不能用作地区可用信号，
-    // 否则所有节点会被判成同一个值（全可用 / 全不可用）。真正区分地区的是页面内容本身。
-    const regionMatch = body.match(/,2,1,200,\s*\\?"?([A-Z]{2,3})\\?"?/);
-    const region = regionMatch ? regionMatch[1] : "";
+    // 诊断指纹：把每个节点实际命中的信号都打出来，便于对照「支持/不支持」节点的真实差异。
+    // 注意：令牌 45631641 是 Google 在每个 Gemini 页面都嵌入的全局功能标志（与出口国家无关），
+    // 不能作地区信号；,2,1,200,"XXX" 地区码经验证也非出口地理（会取到 TWN/USA 等错值），仅作诊断参考。
+    const regionCodes = [...body.matchAll(/,2,1,200,\s*\\?"?([A-Z]{2,3})\\?"?/g)].map((m) => m[1]);
+    const navText = /not available in your (?:country|region|country or region)|isn'?t available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body);
+    const navBroad = /not available in your country|isn'?t available|not supported in your (?:country|region)|country or region/i.test(body);
+    const navRedir = /[?&]p=not_available/i.test(location) || /[?&]p=not_available/i.test(body);
+    const gFlag = /45631641\\?"?:\s*true/.test(body);
+    const wiz = /45631641,null,true/.test(body);
+    const consent = /consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body);
+    const title = /<title>[^<]*gemini/i.test(body);
+    const adv = /Gemini Advanced/i.test(body);
+    const compose = /newChat|Compose/i.test(body);
+    const sign = /Sign in|accounts\.google\.com/i.test(body);
+    const diag = `ST=${status} TT=${title ? 1 : 0} NAV=${navText ? 1 : 0} NAVb=${navBroad ? 1 : 0} NAVR=${navRedir ? 1 : 0} G=${gFlag ? 1 : 0} W=${wiz ? 1 : 0} C=${consent ? 1 : 0} ADV=${adv ? 1 : 0} CMP=${compose ? 1 : 0} SIGN=${sign ? 1 : 0} RC=${(regionCodes.join("/") || "-")}`;
+    const region = regionCodes[0] || "";
 
     // 1) 地区不支持说明页：3xx 重定向到 not_available，或落地页带该参数
-    if (/[?&]p=not_available/i.test(location) || /[?&]p=not_available/i.test(body)) {
-        return { state: "region-blocked", region };
-    }
+    if (navRedir) return { state: "region-blocked", region, diag };
     // 2) 落地页明确文案：所在国家/地区不支持 Gemini
-    if (/not available in your (?:country|region|country or region)|isn'?t available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
-        return { state: "region-blocked", region };
-    }
+    if (navText) return { state: "region-blocked", region, diag };
     // 3) 限流 / Google 风控验证页
-    if (status === 429 || /\bsorry\b/i.test(location) || /\bunusual traffic\b/i.test(body)) {
-        return { state: "blocked", region };
-    }
+    if (status === 429 || /\bsorry\b/i.test(location) || /\bunusual traffic\b/i.test(body)) return { state: "blocked", region, diag };
     // 4) 欧盟/英国法定同意页：地区本身支持，仅需 cookie 同意
-    if (/consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body)) {
-        return { state: "available", region };
-    }
+    if (consent) return { state: "available", region, diag };
     // 5) 3xx 重定向到 Gemini 应用自身（如补斜杠）→ 可访问
-    if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location) && !/not_available/i.test(location)) {
-        return { state: "available", region };
-    }
+    if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location) && !/not_available/i.test(location)) return { state: "available", region, diag };
     // 6) 落地页是 Gemini 应用本体（标题含 Gemini，且不含地区不支持文案）→ 视为可访问
-    if (/<title>[^<]*gemini/i.test(body) || /gemini\.google\.com/i.test(body)) {
-        return { state: "available", region };
-    }
+    //    ⚠️ 已知风险：Google 对“不支持地区”的匿名请求也返回同款应用壳，静态 HTML 无 not-available 文案，
+    //    此规则会把不支持节点误判为可用；诊断指纹用于定位真实区分信号。
+    if (title || /gemini\.google\.com/i.test(body)) return { state: "available", region, diag };
     // 7) 其余情形（如未跟随重定向的 3xx、空响应等）：不足以判定，绝不误判
-    return { state: "unknown", region };
+    return { state: "unknown", region, diag };
 }
 
 function render(ip, data, media) {
