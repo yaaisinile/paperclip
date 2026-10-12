@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12 17:50 (r17)";
+const SCRIPT_VERSION = "2026-10-12 18:14 (r18)";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -577,18 +577,17 @@ function classifyChatGPTApp(response) {
 async function testGemini(geoPromise) {
     // Gemini 网页版地区可用性无法直接由落地页/API 端点判定（实测结论）：
     //  - 匿名落地页在「支持/不支持」出口下完全一致，无判别力（r15 双节点指纹相同）；
-    //  - generativelanguage API 在 key 校验路径不做地区拦截，任何可达 IP 都返回 400，
-    //    故 API=400/403 不能作为地区信号（r16 实测：香港与美国节点均 400）。
-    // 可靠的代理信号来自 Google 自身的 IP 信誉风控：Gemini 对数据中心/代理 IP 拦截更严
-    // （各类“所在国家不支持”诊断均指向机房/中转 IP 被 Google 按信誉拦截，与出口国家无关）。
-    // 因此以本脚本已抓取的出口 IP geo 数据为主判据：
-    //  - 机房/数据中心/代理 IP(hosting/proxy/vpn) → 大概率被拦截；
-    //  - 国家不在 Gemini 网页版支持列表 → 地区不支持；
-    //  - 其余（干净住宅/原生 IP 且地区支持）→ 可访问。
+    //  - generativelanguage API 在 key 校验路径不做地区拦截，任何可达 IP 都返回 400（r16 实测）；
+    //  - 纯「机房/代理标记」也无判别力：可用节点同样全源命中机房+VPN（r17→r18 用户样本A）。
+    // r18 有效判据（多源交叉，与详情页「风险因素」同一份数据）：
+    //  - 任一源命中 滥用(abuse) → ❌ IP 信誉差；
+    //  - ≥2 独立源命中 代理(proxy) → ❌ 公开代理/共享出口；
+    //  - 国家黑名单 → ❌ 地区不支持；
+    //  - 其余（含纯机房/VPN 标记）→ ✅。
     const data = (geoPromise && (await geoPromise.catch(() => null))) || {};
     const v = geminiGeoVerdict(data);
     if (v.state === "datacenter") {
-        return mediaResult("Gemini", "no", v.country || "", "机房/代理IP · Google易拦截 · " + v.reason);
+        return mediaResult("Gemini", "no", v.country || "", "IP 信誉风险 · Google 易拦截 · " + v.reason);
     }
     if (v.state === "region-blocked") {
         return mediaResult("Gemini", "no", v.country || "", "所在国家/地区不支持 · " + v.reason);
@@ -600,27 +599,44 @@ async function testGemini(geoPromise) {
 }
 
 function geminiGeoVerdict(data) {
+    // r18 判据（由用户 4 节点实测样本反推）：
+    //  样本A(可用): 203.10.99.26 JP，全源机房+VPN 标记，但仅 IP2Location 1 源命中代理、零源命中滥用
+    //  样本B(不可用): 23.237.50.28 US，ipregistry 命中滥用
+    //  样本C(不可用): 211.20.x TW 家宽，IP2L+ipregistry+IPQS 3 源命中代理、IPQS 命中滥用
+    //  样本D(不可用): 203.10.99.x JP(与A同/24 同ASN)，3 源命中代理、2 源命中滥用
+    // 结论：机房/VPN 标记本身无判别力（可用节点也全命中）；有效信号是
+    //  「滥用命中」与「≥2 独立源代理命中」——与 Google 按 IP 信誉拦截的行为一致。
     const ipApiCom = (data.ipApiCom && data.ipApiCom.status === "success") ? data.ipApiCom : {};
     const proxycheck = proxycheckRecord(data.proxycheck) || {};
     const rawCC = ipApiCom.countryCode
         || (data.maxmind && data.maxmind.Country && data.maxmind.Country.IsoCode)
         || (data.ipinfo && data.ipinfo.country) || "";
     const country = /^[A-Za-z]{2}$/.test(String(rawCC).trim()) ? String(rawCC).trim().toUpperCase() : "";
-    const hosting = ipApiCom.hosting === true;
-    const ipApiProxy = ipApiCom.proxy === true;
-    const pcProxy = ["proxy", "vpn"].some((k) => {
-        const val = proxycheck[k];
-        return val === 1 || val === true || val === "1" || val === "yes";
-    });
-    const proxy = ipApiProxy || pcProxy;
     const org = String(ipApiCom.asname || ipApiCom.org || proxycheck.organisation || "").slice(0, 28);
-    const reason = `CC=${country || "-"} HOST=${hosting ? 1 : 0} PROXY=${proxy ? 1 : 0} ORG=${org}`;
+
+    const factors = buildFactors(data).filter((f) => f && f.available);
+    const countCheck = (keys) => factors.filter((f) => keys.some((k) => f.checks[k] === true)).length;
+    const proxySources = countCheck(["代理"]);
+    const abuseSources = countCheck(["滥用"]);
+    const hostSources = countCheck(["机房"]);
+    const vpnSources = countCheck(["VPN"]);
+    const reason = `CC=${country || "-"} HOST=${hostSources} VPN=${vpnSources} PROXY=${proxySources} ABUSE=${abuseSources} ORG=${org}`;
     if (!country) return { state: "unknown", country: "", reason };
-    // 1) 机房/数据中心/代理 IP：Google 对 Gemini 按 IP 信誉严拦截，与出口国家无关
-    if (hosting || proxy) return { state: "datacenter", country, reason };
-    // 2) 国家不在 Gemini 网页版支持列表（仅覆盖 Google 明确合规限制的地区）
+    // 1) 国家不在 Gemini 网页版支持列表（小范围合规黑名单）
     if (GEMINI_UNSUPPORTED.indexOf(country) >= 0) return { state: "region-blocked", country, reason };
-    // 3) 地区支持且为干净住宅/原生 IP
+    // 2) 任一源命中滥用/威胁 → IP 信誉差，Google 大概率按风控拦截
+    if (abuseSources >= 1) return { state: "datacenter", country, reason };
+    // 3) ≥2 个独立源命中代理 → 公开代理/共享出口，Google 严拦
+    if (proxySources >= 2) return { state: "datacenter", country, reason };
+    // 4) 无多源代理数据时，回退 ip-api/proxycheck 的代理标记
+    if (proxySources === 0) {
+        const pcProxy = ["proxy", "vpn"].some((k) => {
+            const val = proxycheck[k];
+            return val === 1 || val === true || val === "1" || val === "yes";
+        });
+        if (ipApiCom.proxy === true || pcProxy) return { state: "datacenter", country, reason };
+    }
+    // 5) 其余（含纯机房/VPN 标记但代理/滥用未多源命中的 IP，如样本A）→ 可访问
     return { state: "available", country, reason };
 }
 
