@@ -59,6 +59,7 @@ generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/
 | 2026-10-12 | r11：修正令牌匹配——实测当前落地页令牌为 JSON 键 `"45631641":true`（非旧格式 `45631641,null,true`），修复可用节点被误判不支持；新增 `":false` 直接判不可用 |
 | 2026-10-12 | r12：修复可用节点仍误判不可用——根因是页面里引号被转义为 `\"45631641\":true`、且支持页页脚含 `support.google.com/gemini?p=avatar` 帮助链接被旧规则误判；改为兼容转义引号、仅在 3xx 重定向 Location 指向说明页或带 `not_available` 参数时判不可用，并用桌面 Chrome UA 与无斜杠 URL；无令牌且无负面信号时判未确认而非不可用 |
 | 2026-10-12 | r13：修正反向误判（不可用节点显示可用）——`\"45631641\":true` 是**所有节点都有的全局功能标志**（含被风控/地区不支持节点），不能作可用信号；改以 WIZ 应用数据令牌 `45631641,null,true` 为唯一可用信号（Google 仅在该出口真正可用时内嵌），只有全局标志而无 WIZ 令牌的页面判为「地区不支持 / IP 被风控」 |
+| 2026-10-12 | r14：修正"全可用/全不可用"二值误判——实测确认 `45631641`（无论 `,null,true` 还是 `":true`）是 Google 在**每个** Gemini 页面都嵌入的全局功能标志，与出口国家无关，作为信号会导致所有节点同值；改为**基于页面内容**判定：含 "not available in your country" 文案或 `not_available` 重定向 → 地区不支持；落地为 Gemini 应用页（标题含 Gemini）→ 可访问；其余 → 未确认（绝不误判）。配套 web 测试版 SOURCE_URL 同步、缓存戳 poc19 |
 | 2026-07-19 | r8：补充 ASN/组织、IPPure 分流出口识别、Apple 地图通知与多源稳定性修复 |
 | 2026-07-18 | r1：初版进入 testing |
 
