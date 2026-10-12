@@ -4,11 +4,11 @@
  * $argument 固定为 basic、risk 或 media，不依赖插件参数插值。
  *
  * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
- * @Updated: 2026-08-04
+ * @Updated: 2026-10-12
  */
 
-const QUICK_VERSION = "2026-08-04.poc12";
-const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/eaa04fe0a9f37ccfafdd11930d28fd5ff3f04718/loon/ipquality/ipquality.js";
+const QUICK_VERSION = "2026-10-12.poc13";
+const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/87a48129d6f14869b3ae9635b548ddd31178ee97/loon/ipquality/ipquality.js";
 const params = typeof $environment !== "undefined" && $environment.params
     ? $environment.params
     : {};
