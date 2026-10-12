@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12.r13";
+const SCRIPT_VERSION = "2026-10-12.r14";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -584,9 +584,9 @@ async function testGemini() {
     if (verdict.state === "available") {
         return mediaResult("Gemini", "yes", verdict.region || "", verdict.region ? "可访问 · 地区 " + verdict.region : "可访问");
     }
-    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持或 IP 被风控");
+    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持" + (verdict.region ? " · " + verdict.region : "或 IP 被风控"));
     if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流");
-    return mediaResult("Gemini", "unknown", "", "响应不足以确认");
+    return mediaResult("Gemini", "unknown", "", "响应不足以确认" + (verdict.region ? " · 落地页地区 " + verdict.region : ""));
 }
 
 function classifyGemini(response) {
@@ -596,48 +596,38 @@ function classifyGemini(response) {
     const headers = (response.response && response.response.headers) || {};
     const location = String(headers.location || headers.Location || "");
 
-    // 1) 重定向到 Gemini 不支持说明页：仅当 3xx 跳转到 support.google.com/gemini，或带 not_available 参数
-    //    （支持的页面页脚也含 support.google.com/gemini 帮助链接，不能据此判不可用）
-    if (status >= 300 && status < 400 && /support\.google\.com\/gemini/i.test(location)) {
-        return { state: "region-blocked" };
-    }
+    // 重要：令牌 45631641 是 Google 在“每个” Gemini 页面都嵌入的全局功能标志
+    // （形如 \"45631641\":true 或 45631641,null,true），与出口国家无关 —— 不能用作地区可用信号，
+    // 否则所有节点会被判成同一个值（全可用 / 全不可用）。真正区分地区的是页面内容本身。
+    const regionMatch = body.match(/,2,1,200,\s*\\?"?([A-Z]{2,3})\\?"?/);
+    const region = regionMatch ? regionMatch[1] : "";
+
+    // 1) 地区不支持说明页：3xx 重定向到 not_available，或落地页带该参数
     if (/[?&]p=not_available/i.test(location) || /[?&]p=not_available/i.test(body)) {
-        return { state: "region-blocked" };
+        return { state: "region-blocked", region };
     }
-    // 2) 明确的地区不支持提示文案
-    if (/not available in your (?:country|region)|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
-        return { state: "region-blocked" };
+    // 2) 落地页明确文案：所在国家/地区不支持 Gemini
+    if (/not available in your (?:country|region|country or region)|isn'?t available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
+        return { state: "region-blocked", region };
     }
     // 3) 限流 / Google 风控验证页
-    if (status === 429 || /\bsorry\b/i.test(location) || /unusual traffic/i.test(body)) {
-        return { state: "blocked" };
+    if (status === 429 || /\bsorry\b/i.test(location) || /\bunusual traffic\b/i.test(body)) {
+        return { state: "blocked", region };
     }
-    // 4) 核心可用信号：WIZ 应用数据令牌 45631641,null,true
-    //    该令牌仅当出口 IP 真正可用时由 Google 内嵌；被风控/地区不支持的节点落地页不含它。
-    //    （页面里另有 \"45631641\":true 这类全局功能标志，所有节点都有，不能用作可用信号。）
-    if (/45631641,null,true/.test(body)) {
-        const regionMatch = body.match(/,2,1,200,\\?"([A-Z]{2,3})\\?"/);
-        return { state: "available", region: regionMatch ? regionMatch[1] : "" };
-    }
-    // 5) WIZ 令牌缺失，但存在全局功能标志 \"45631641\":true / :false（引号可能被转义）→
-    //    该出口被 Google 判定为不支持（地区不支持，或数据中心/被风控 IP）。用于筛掉这类节点。
-    if (/45631641\\?"?:(true|false)/.test(body)) {
-        return { state: "region-blocked" };
-    }
-    // 6) WIZ 明确为 false → 不可用
-    if (/45631641,null,false/.test(body)) {
-        return { state: "region-blocked" };
-    }
-    // 7) 欧盟/英国法定同意页：地区本身支持，仅需 cookie 同意
+    // 4) 欧盟/英国法定同意页：地区本身支持，仅需 cookie 同意
     if (/consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body)) {
-        return { state: "available" };
+        return { state: "available", region };
     }
-    // 8) 拿到 Gemini 页面但无任何可用性信号：不足以判定，不误判为可用
+    // 5) 3xx 重定向到 Gemini 应用自身（如补斜杠）→ 可访问
+    if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location) && !/not_available/i.test(location)) {
+        return { state: "available", region };
+    }
+    // 6) 落地页是 Gemini 应用本体（标题含 Gemini，且不含地区不支持文案）→ 视为可访问
     if (/<title>[^<]*gemini/i.test(body) || /gemini\.google\.com/i.test(body)) {
-        return { state: "unknown" };
+        return { state: "available", region };
     }
-    // 其余情形（如 Loon 未跟随重定向的 3xx、空响应等）不足以判断
-    return { state: "unknown" };
+    // 7) 其余情形（如未跟随重定向的 3xx、空响应等）：不足以判定，绝不误判
+    return { state: "unknown", region };
 }
 
 function render(ip, data, media) {
