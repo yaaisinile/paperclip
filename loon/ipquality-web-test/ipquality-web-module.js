@@ -7,8 +7,8 @@
  * @Updated: 2026-10-12
  */
 
-const TEST_VERSION = "2026-10-12 17:50 (poc23)";
-const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/0a52ad719c93a653e440a925b87fd6e3e60157d5/loon/ipquality/ipquality.js";
+const TEST_VERSION = "2026-10-12 18:14 (poc24)";
+const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/205d81267060fb9a83245a6c3d285f9fc5bfacfa/loon/ipquality/ipquality.js";
 const SESSION_KEY = "paperclip.ipquality.web.session";
 const SESSION_TTL_MS = 30 * 60 * 1000;
 
