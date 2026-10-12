@@ -3,7 +3,7 @@
  *
  * 抓取:打开「扫描全能王」APP → 任意页停留 1 秒(触发 get_user_attribute),抓 Token
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-20
  */

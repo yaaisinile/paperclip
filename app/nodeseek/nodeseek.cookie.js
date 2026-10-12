@@ -3,7 +3,7 @@
  *
  * 抓取：用 Safari 打开 nodeseek.com 任意页面，自动保存 pjwt 登录凭证
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-26
  */

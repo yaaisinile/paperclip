@@ -3,7 +3,7 @@
  *
  * 抓取:打开「网上国网」App → 进「我的 / 积分签到」页,抓 Cookie(t/设备头)+ 签到请求(供 cron 复用)
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-22
  */

@@ -8,7 +8,7 @@
  *       微信内打开任意滔搏 H5 链接 → 自动捕获 QZ_SID(H5 会话)
  * 签到:cron 定时自动签到;Authorization 失效时自动降级到 H5 会话(QZ_SID)
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-07
  *
@@ -16,29 +16,29 @@
  * [MITM]
  * hostname = m.topsports.com.cn, wxmall.topsports.com.cn
  * [Script]
- * http-request ^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo tag=滔搏 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * http-request ^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/ tag=滔搏 Auth, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * http-response ^https:\/\/m\.topsports\.com\.cn\/ tag=滔搏 H5, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * cron "15 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, tag=滔搏签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png, enable=true
+ * http-request ^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo tag=滔搏 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * http-request ^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/ tag=滔搏 Auth, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * http-response ^https:\/\/m\.topsports\.com\.cn\/ tag=滔搏 H5, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * cron "15 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, tag=滔搏签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = m.topsports.com.cn, wxmall.topsports.com.cn
  * [Script]
- * 滔搏 Cookie = type=http-request,pattern=^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * 滔搏 Auth = type=http-request,pattern=^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * 滔搏 H5 = type=http-response,pattern=^https:\/\/m\.topsports\.com\.cn\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
- * 滔搏签到 = type=cron,cronexp=15 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * 滔搏 Cookie = type=http-request,pattern=^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * 滔搏 Auth = type=http-request,pattern=^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * 滔搏 H5 = type=http-response,pattern=^https:\/\/m\.topsports\.com\.cn\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
+ * 滔搏签到 = type=cron,cronexp=15 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = m.topsports.com.cn, wxmall.topsports.com.cn
  * [rewrite_local]
- * ^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
- * ^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/ url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
- * ^https:\/\/m\.topsports\.com\.cn\/ url script-response-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
+ * ^https:\/\/m\.topsports\.com\.cn\/h5\/act\/signIn\/actInfo url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
+ * ^https:\/\/wxmall\.topsports\.com\.cn\/shopMember\/ url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
+ * ^https:\/\/m\.topsports\.com\.cn\/ url script-response-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
  * [task_local]
- * 15 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, tag=滔搏签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png, enabled=true
+ * 15 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js, tag=滔搏签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/topsports.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -65,7 +65,7 @@
  *       require-body: false
  * script-providers:
  *   滔搏签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/topsports/topsports.js
  *     interval: 86400
  */
 

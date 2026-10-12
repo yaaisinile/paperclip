@@ -4,7 +4,7 @@
  * 抓取:打开小米商城 APP → 狂欢礼 → 进入抽奖活动页,抓 Cookie 与活动配置
  * 签到:cron 自动完成签到/分享/浏览任务并用完抽奖次数
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-08-16
  *
@@ -13,28 +13,28 @@
  * hostname = shop-api.retail.mi.com
  *
  * [Script]
- * http-request ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch tag=小米抽奖 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
+ * http-request ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch tag=小米抽奖 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
  *
- * cron "30 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js, tag=小米抽奖签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, timeout=360, enable=true
+ * cron "30 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js, tag=小米抽奖签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, timeout=360, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = %APPEND% shop-api.retail.mi.com
  *
  * [Script]
- * 小米抽奖 Cookie = type=http-request,pattern=^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
+ * 小米抽奖 Cookie = type=http-request,pattern=^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
  *
- * 小米抽奖签到 = type=cron,cronexp=30 8 * * *,timeout=360,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
+ * 小米抽奖签到 = type=cron,cronexp=30 8 * * *,timeout=360,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = shop-api.retail.mi.com
  *
  * [rewrite_local]
- * ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js
+ * ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/venue\/batch url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js
  *
  * [task_local]
- * 30 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js, tag=小米抽奖签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enabled=true
+ * 30 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js, tag=小米抽奖签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -54,7 +54,7 @@
  *
  * script-providers:
  *   小米抽奖签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/milottery/milottery.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/milottery/milottery.js
  *     interval: 86400
  */
 

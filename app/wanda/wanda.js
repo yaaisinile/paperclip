@@ -4,7 +4,7 @@
  * 抓取:打开万达电影 APP →「我的」,见 wanda.cookie.js
  * 签到:cron 定时,签名本地计算,全自包含不联网。
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-10
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = user-api-prd-mx.wandafilm.com
  * [Script]
- * http-request ^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info tag=万达电影 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
- * cron "20 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.js, tag=万达电影签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png, enable=true
+ * http-request ^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info tag=万达电影 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
+ * cron "20 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.js, tag=万达电影签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = user-api-prd-mx.wandafilm.com
  * [Script]
- * 万达电影 Cookie = type=http-request,pattern=^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
- * 万达电影签到 = type=cron,cronexp=20 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
+ * 万达电影 Cookie = type=http-request,pattern=^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
+ * 万达电影签到 = type=cron,cronexp=20 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = user-api-prd-mx.wandafilm.com
  * [rewrite_local]
- * ^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.cookie.js
+ * ^https:\/\/user-api-prd-mx\.wandafilm\.com\/user\/user_info url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.cookie.js
  * [task_local]
- * 20 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.js, tag=万达电影签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png, enabled=true
+ * 20 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.js, tag=万达电影签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wanda.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: false
  * script-providers:
  *   万达电影签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wanda/wanda.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wanda/wanda.js
  *     interval: 86400
  */
 

@@ -24,9 +24,9 @@
 hostname = cn-yx-wxmall.dreame.tech
 
 [Script]
-http-request ^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info tag=灵狐灵购 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
+http-request ^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info tag=灵狐灵购 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
 
-cron "33 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js, tag=灵狐灵购签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png, enable=true
+cron "33 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js, tag=灵狐灵购签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png, enable=true
 ```
 
 ## Surge
@@ -36,9 +36,9 @@ cron "33 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = cn-yx-wxmall.dreame.tech
 
 [Script]
-灵狐灵购 Cookie = type=http-request,pattern=^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
+灵狐灵购 Cookie = type=http-request,pattern=^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
 
-灵狐灵购签到 = type=cron,cronexp=33 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
+灵狐灵购签到 = type=cron,cronexp=33 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png
 ```
 
 ## Quantumult X
@@ -48,10 +48,10 @@ hostname = cn-yx-wxmall.dreame.tech
 hostname = cn-yx-wxmall.dreame.tech
 
 [rewrite_local]
-^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js
+^https:\/\/cn-yx-wxmall\.dreame\.tech\/main\/my\/info url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js
 
 [task_local]
-33 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js, tag=灵狐灵购签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png, enabled=true
+33 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js, tag=灵狐灵购签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linghu.png, enabled=true
 ```
 
 ## Stash
@@ -74,7 +74,7 @@ http:
 
 script-providers:
   灵狐灵购签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/linghu/linghu.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/linghu/linghu.js
     interval: 86400
 ```
 

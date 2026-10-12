@@ -24,9 +24,9 @@
 hostname = xunting.vbegin.com.cn
 
 [Script]
-http-request ^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app tag=听听FM Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
+http-request ^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app tag=听听FM Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
 
-cron "20 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, tag=听听FM签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png, enable=true
+cron "20 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, tag=听听FM签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png, enable=true
 ```
 
 ## Surge
@@ -36,9 +36,9 @@ cron "20 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = xunting.vbegin.com.cn
 
 [Script]
-听听FM Cookie = type=http-request,pattern=^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
+听听FM Cookie = type=http-request,pattern=^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
 
-听听FM签到 = type=cron,cronexp=20 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
+听听FM签到 = type=cron,cronexp=20 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png
 ```
 
 ## Quantumult X
@@ -48,10 +48,10 @@ hostname = xunting.vbegin.com.cn
 hostname = xunting.vbegin.com.cn
 
 [rewrite_local]
-^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js
+^https:\/\/xunting\.vbegin\.com\.cn\/sns\/app url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js
 
 [task_local]
-20 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, tag=听听FM签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png, enabled=true
+20 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js, tag=听听FM签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tingtingfm.png, enabled=true
 ```
 
 ## Stash
@@ -74,7 +74,7 @@ http:
 
 script-providers:
   听听FM签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tingtingfm/tingtingfm.js
     interval: 86400
 ```
 

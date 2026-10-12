@@ -3,7 +3,7 @@
   "name": "Paperclip",
   "author": "@MaYIHEI",
   "icon": "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/paperclip.png",
-  "repo": "https://github.com/MaYIHEI/paperclip",
+  "repo": "https://github.com/yaaisinile/paperclip",
   "apps": [
     {
       "id": "paperclip.ppmt",
@@ -40,8 +40,8 @@
         }
       ],
       "author": "@Sliverkiss, 修复 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/ppmt",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/ppmt/ppmt.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/ppmt",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/ppmt/ppmt.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/popmart.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/popmart.png"
@@ -65,8 +65,8 @@
         }
       ],
       "author": "@FoKit, blackBox @Sliverkiss, 适配 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/tuhu",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/tuhu/tuhu.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/tuhu",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/tuhu/tuhu.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tuhu.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tuhu.png"
@@ -83,16 +83,16 @@
       ],
       "settings": [],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/bibisheng",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/bibisheng/bibisheng.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/bibisheng",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/bibisheng/bibisheng.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/bibisheng/bibisheng.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/bibisheng/bibisheng.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/bibisheng/bibisheng.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/bibisheng/bibisheng.cookie.js"
         }
       ],
       "icons": [
@@ -119,8 +119,8 @@
         }
       ],
       "author": "@Sliverkiss, 修复 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/haidilao",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/haidilao/haidilao.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/haidilao",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/haidilao/haidilao.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/haidilao.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/haidilao.png"
@@ -171,16 +171,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/huisheng",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/huisheng/huisheng.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/huisheng",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/huisheng/huisheng.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/huisheng/huisheng.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/huisheng/huisheng.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/huisheng/huisheng.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/huisheng/huisheng.cookie.js"
         }
       ],
       "icons": [
@@ -223,8 +223,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/miniso",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/miniso/miniso.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/miniso",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/miniso/miniso.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/miniso.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/miniso.png"
@@ -247,8 +247,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/longde",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/longde/longde.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/longde",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/longde/longde.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/longde.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/longde.png"
@@ -290,8 +290,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/bhg",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/bhg/bhg.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/bhg",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/bhg/bhg.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/bhg.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/bhg.png"
@@ -336,16 +336,16 @@
         }
       ],
       "author": "@Evilbutcher / @toulanboy, 适配 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/weibotalk",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/weibotalk/weibotalk.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/weibotalk",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/weibotalk/weibotalk.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/weibotalk/weibotalk.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/weibotalk/weibotalk.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/weibotalk/weibotalk.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/weibotalk/weibotalk.cookie.js"
         }
       ],
       "icons": [
@@ -391,16 +391,16 @@
         }
       ],
       "author": "@MaYIHEI (业务参考 @kayanouriko / @daye99 / @Womsxd)",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/mihoyo",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mihoyo/mihoyo.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/mihoyo",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mihoyo/mihoyo.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mihoyo/mihoyo.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mihoyo/mihoyo.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mihoyo/mihoyo.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mihoyo/mihoyo.cookie.js"
         }
       ],
       "icons": [
@@ -443,8 +443,8 @@
         }
       ],
       "author": "@WowYiJiu, 精简 + 适配新接口 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/tenvideo",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/tenvideo/tenvideo.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/tenvideo",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/tenvideo/tenvideo.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tenvideo.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tenvideo.png"
@@ -485,16 +485,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/newmixc",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/newmixc/newmixc.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/newmixc",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/newmixc/newmixc.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/newmixc/newmixc.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/newmixc/newmixc.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/newmixc/newmixc.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/newmixc/newmixc.cookie.js"
         }
       ],
       "icons": [
@@ -519,8 +519,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/lhtj",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/lhtj/lhtj.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/lhtj",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/lhtj/lhtj.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lhtj.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lhtj.png"
@@ -588,8 +588,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/lhtj",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/lhtj/lhtj.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/lhtj",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/lhtj/lhtj.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lhtj.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lhtj.png"
@@ -630,16 +630,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/wanda",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/wanda/wanda.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/wanda",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/wanda/wanda.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/wanda/wanda.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/wanda/wanda.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/wanda/wanda.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/wanda/wanda.cookie.js"
         }
       ],
       "icons": [
@@ -719,16 +719,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/qqmusic",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/qqmusic/qqmusic.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/qqmusic",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/qqmusic/qqmusic.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/qqmusic/qqmusic.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/qqmusic/qqmusic.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/qqmusic/qqmusic.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/qqmusic/qqmusic.js"
         }
       ],
       "icons": [
@@ -746,8 +746,8 @@
       ],
       "settings": [],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/casetify",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/casetify/casetify.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/casetify",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/casetify/casetify.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/casetify.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/casetify.png"
@@ -789,8 +789,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/songshan",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/songshan/songshan.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/songshan",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/songshan/songshan.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/songshan.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/songshan.png"
@@ -839,8 +839,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/wedome",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/wedome/wedome.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/wedome",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/wedome/wedome.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/wedome.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/wedome.png"
@@ -855,8 +855,8 @@
       ],
       "settings": [],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/topsports",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/topsports/topsports.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/topsports",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/topsports/topsports.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/topsports.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/topsports.png"
@@ -897,16 +897,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/mishop",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mishop/mishop.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/mishop",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mishop/mishop.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mishop/mishop.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mishop/mishop.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/mishop/mishop.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/mishop/mishop.cookie.js"
         }
       ],
       "icons": [
@@ -949,8 +949,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/youpin",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/youpin/youpin.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/youpin",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/youpin/youpin.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/youpin.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/youpin.png"
@@ -991,8 +991,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/tingtingfm",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/tingtingfm/tingtingfm.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/tingtingfm",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/tingtingfm/tingtingfm.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tingtingfm.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/tingtingfm.png"
@@ -1006,8 +1006,8 @@
       ],
       "settings": [],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/lvcchong",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/lvcchong/lvcchong.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/lvcchong",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/lvcchong/lvcchong.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lvcchong.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lvcchong.png"
@@ -1022,8 +1022,8 @@
       ],
       "settings": [],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/lvcchong",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/lvcchong/lvcchong.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/lvcchong",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/lvcchong/lvcchong.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lvcchong.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/lvcchong.png"
@@ -1072,8 +1072,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/camscanner",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/camscanner/camscanner.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/camscanner",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/camscanner/camscanner.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/camscanner.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/camscanner.png"
@@ -1230,8 +1230,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/wps",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/wps/wps.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/wps",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/wps/wps.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/wps.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/wps.png"
@@ -1273,8 +1273,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/sgcc",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/sgcc/sgcc.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/sgcc",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/sgcc/sgcc.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/sgcc.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/sgcc.png"
@@ -1315,8 +1315,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/dreame",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/dreame/dreame.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/dreame",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/dreame/dreame.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/dreame.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/dreame.png"
@@ -1357,8 +1357,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/linghu",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/linghu/linghu.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/linghu",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/linghu/linghu.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/linghu.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/linghu.png"
@@ -1428,16 +1428,16 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/nodeseek",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/nodeseek/nodeseek.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/nodeseek",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/nodeseek/nodeseek.js",
       "scripts": [
         {
           "name": "主签到",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/nodeseek/nodeseek.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/nodeseek/nodeseek.js"
         },
         {
           "name": "抓 Cookie",
-          "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/nodeseek/nodeseek.cookie.js"
+          "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/nodeseek/nodeseek.cookie.js"
         }
       ],
       "icons": [
@@ -1481,8 +1481,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/baidunetdisk",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/baidunetdisk/baidunetdisk.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/baidunetdisk",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/baidunetdisk/baidunetdisk.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/baidunetdisk.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/baidunetdisk.png"
@@ -1523,8 +1523,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/milottery",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/milottery/milottery.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/milottery",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/milottery/milottery.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/mishop.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/mishop.png"
@@ -1601,8 +1601,8 @@
         }
       ],
       "author": "@MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/miniprogram/linli",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/main/miniprogram/linli/linli.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/miniprogram/linli",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/main/miniprogram/linli/linli.js",
       "icons": [
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/linli.png",
         "https://raw.githubusercontent.com/MaYIHEI/pin/main/app/linli.png"
@@ -1660,11 +1660,11 @@
         }
       ],
       "author": "@773075692, 移植 @MaYIHEI",
-      "repo": "https://github.com/MaYIHEI/paperclip/tree/main/app/agentrouter",
-      "script": "https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js",
+      "repo": "https://github.com/yaaisinile/paperclip/tree/main/app/agentrouter",
+      "script": "https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js",
       "icons": [
-        "https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png",
-        "https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png"
+        "https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png",
+        "https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png"
       ]
     }
   ]

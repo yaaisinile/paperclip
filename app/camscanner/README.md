@@ -25,9 +25,9 @@
 hostname = api-cs.intsig.net
 
 [Script]
-http-request ^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute tag=扫描全能王 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
+http-request ^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute tag=扫描全能王 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
 
-cron "15 10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.js, tag=扫描全能王签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png, enable=true
+cron "15 10 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.js, tag=扫描全能王签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png, enable=true
 ```
 
 ## Surge
@@ -37,9 +37,9 @@ cron "15 10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercl
 hostname = api-cs.intsig.net
 
 [Script]
-扫描全能王 Cookie = type=http-request,pattern=^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
+扫描全能王 Cookie = type=http-request,pattern=^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
 
-扫描全能王签到 = type=cron,cronexp=15 10 * * *,timeout=120,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
+扫描全能王签到 = type=cron,cronexp=15 10 * * *,timeout=120,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png
 ```
 
 ## Quantumult X
@@ -49,10 +49,10 @@ hostname = api-cs.intsig.net
 hostname = api-cs.intsig.net
 
 [rewrite_local]
-^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js
+^https:\/\/api-cs\.intsig\.net\/user\/cs\/get_user_attribute url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.cookie.js
 
 [task_local]
-15 10 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.js, tag=扫描全能王签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png, enabled=true
+15 10 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.js, tag=扫描全能王签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/camscanner.png, enabled=true
 ```
 
 ## Stash
@@ -75,7 +75,7 @@ http:
 
 script-providers:
   扫描全能王签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/camscanner/camscanner.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/camscanner/camscanner.js
     interval: 86400
 ```
 

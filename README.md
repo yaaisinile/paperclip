@@ -27,7 +27,7 @@
 所有脚本均通过 GitHub Raw URL 引用,格式:
 
 ```
-https://raw.githubusercontent.com/MaYIHEI/paperclip/main/<分类>/<脚本名>/<脚本名>.<ext>
+https://raw.githubusercontent.com/yaaisinile/paperclip/main/<分类>/<脚本名>/<脚本名>.<ext>
 ```
 
 具体每个脚本的重写规则与 cron 配置,请进入对应子目录的 README 查看。

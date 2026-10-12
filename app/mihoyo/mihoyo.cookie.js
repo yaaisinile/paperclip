@@ -4,7 +4,7 @@
  * 抓取①:打开「米游社」APP → 进「我的」页,抓游戏角色列表(http-response)
  * 抓取②:进任意游戏签到页手动签一次,抓签到所需 Cookie
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-07-27
  */

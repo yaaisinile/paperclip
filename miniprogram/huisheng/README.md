@@ -25,9 +25,9 @@
 hostname = media.meituan.com
 
 [Script]
-http-request ^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon tag=惠省红包墙 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
+http-request ^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon tag=惠省红包墙 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
 
-cron "5 0 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js, tag=惠省红包墙签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png, enable=true
+cron "5 0 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js, tag=惠省红包墙签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png, enable=true
 ```
 
 ## Surge
@@ -37,9 +37,9 @@ cron "5 0 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip
 hostname = media.meituan.com
 
 [Script]
-惠省红包墙 Cookie = type=http-request,pattern=^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
+惠省红包墙 Cookie = type=http-request,pattern=^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
 
-惠省红包墙签到 = type=cron,cronexp=5 0 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
+惠省红包墙签到 = type=cron,cronexp=5 0 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png
 ```
 
 ## Quantumult X
@@ -49,10 +49,10 @@ hostname = media.meituan.com
 hostname = media.meituan.com
 
 [rewrite_local]
-^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js
+^https:\/\/media\.meituan\.com\/fulishemini\/couponActivity\/listActivityCoupon url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.cookie.js
 
 [task_local]
-5 0 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js, tag=惠省红包墙签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png, enabled=true
+5 0 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js, tag=惠省红包墙签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/huisheng.png, enabled=true
 ```
 
 ## Stash
@@ -75,7 +75,7 @@ http:
 
 script-providers:
   惠省红包墙签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/huisheng/huisheng.js
     interval: 86400
 ```
 

@@ -4,7 +4,7 @@
  * 抓取:打开「一点万象」APP → 任意页停留 1 秒(自动触发 getPersonalData),抓 cookie
  * 签到:cron 定时自动签到
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-23
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = app.mixcapp.com
  * [Script]
- * http-request ^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData tag=一点万象 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
- * cron "37 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.js, tag=一点万象签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png, enable=true
+ * http-request ^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData tag=一点万象 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
+ * cron "37 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.js, tag=一点万象签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = app.mixcapp.com
  * [Script]
- * 一点万象 Cookie = type=http-request,pattern=^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
- * 一点万象签到 = type=cron,cronexp=37 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
+ * 一点万象 Cookie = type=http-request,pattern=^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
+ * 一点万象签到 = type=cron,cronexp=37 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = app.mixcapp.com
  * [rewrite_local]
- * ^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js
+ * ^https:\/\/app\.mixcapp\.com\/mixc\/api\/v4\/member\/getPersonalData url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.cookie.js
  * [task_local]
- * 37 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.js, tag=一点万象签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png, enabled=true
+ * 37 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.js, tag=一点万象签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/newmixc.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: false
  * script-providers:
  *   一点万象签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/newmixc/newmixc.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/newmixc/newmixc.js
  *     interval: 86400
  */
 

@@ -4,13 +4,13 @@
  * 使用:在 Loon 的节点或策略组页面对目标执行「节点阻断检测」
  *
  * @Author: @RavelloH <https://github.com/RavelloH>
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-07-17
  *
  * ===== Loon =====
  * [Script]
- * generic script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/nodecheck/nodecheck.js, tag=节点阻断检测, timeout=20, img-url=bolt.horizontal.icloud.fill.system, enable=true
+ * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/nodecheck/nodecheck.js, tag=节点阻断检测, timeout=20, img-url=bolt.horizontal.icloud.fill.system, enable=true
  */
 
 const SCRIPT_VERSION = "2026-07-17.r1";

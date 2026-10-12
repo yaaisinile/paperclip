@@ -26,9 +26,9 @@
 hostname = h5.bj.10086.cn
 
 [Script]
-http-request ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ tag=北京移动 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
+http-request ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ tag=北京移动 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
 
-cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enable=true
+cron "20 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enable=true
 ```
 
 ## Surge
@@ -38,9 +38,9 @@ cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = %APPEND% h5.bj.10086.cn
 
 [Script]
-北京移动 Cookie = type=http-request,pattern=^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
+北京移动 Cookie = type=http-request,pattern=^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
 
-北京移动签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
+北京移动签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
 ```
 
 ## Quantumult X
@@ -50,10 +50,10 @@ hostname = %APPEND% h5.bj.10086.cn
 hostname = h5.bj.10086.cn
 
 [rewrite_local]
-^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
+^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
 
 [task_local]
-20 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enabled=true
+20 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enabled=true
 ```
 
 ## Stash
@@ -76,7 +76,7 @@ http:
 
 script-providers:
   北京移动签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
     interval: 86400
 ```
 

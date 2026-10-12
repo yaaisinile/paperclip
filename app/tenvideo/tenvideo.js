@@ -5,7 +5,7 @@
  * 签到:cron 自动续期后签到
  *
  * @Author: @WowYiJiu
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-05
  *
@@ -13,23 +13,23 @@
  * [MITM]
  * hostname = pbaccess.video.qq.com, vip.video.qq.com
  * [Script]
- * http-request ^https:\/\/pbaccess\.video\.qq\.com\/ tag=腾讯视频 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
- * cron "10 0 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, tag=腾讯视频签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png, enable=true
+ * http-request ^https:\/\/pbaccess\.video\.qq\.com\/ tag=腾讯视频 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
+ * cron "10 0 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, tag=腾讯视频签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = pbaccess.video.qq.com, vip.video.qq.com
  * [Script]
- * 腾讯视频 Cookie = type=http-request,pattern=^https:\/\/pbaccess\.video\.qq\.com\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
- * 腾讯视频签到 = type=cron,cronexp=10 0 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
+ * 腾讯视频 Cookie = type=http-request,pattern=^https:\/\/pbaccess\.video\.qq\.com\/,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
+ * 腾讯视频签到 = type=cron,cronexp=10 0 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = pbaccess.video.qq.com, vip.video.qq.com
  * [rewrite_local]
- * ^https:\/\/pbaccess\.video\.qq\.com\/ url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js
+ * ^https:\/\/pbaccess\.video\.qq\.com\/ url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js
  * [task_local]
- * 10 0 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, tag=腾讯视频签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png, enabled=true
+ * 10 0 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js, tag=腾讯视频签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tenvideo.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -48,7 +48,7 @@
  *       require-body: false
  * script-providers:
  *   腾讯视频签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/tenvideo/tenvideo.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/tenvideo/tenvideo.js
  *     interval: 86400
  */
 

@@ -26,9 +26,9 @@
 hostname = a.china-smartech.com
 
 [Script]
-http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=龙德广场 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=龙德广场 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
 
-cron "5 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enable=true
+cron "5 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enable=true
 ```
 
 ## Surge
@@ -38,9 +38,9 @@ cron "5 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip
 hostname = a.china-smartech.com
 
 [Script]
-龙德广场 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+龙德广场 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
 
-龙德广场签到 = type=cron,cronexp=5 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+龙德广场签到 = type=cron,cronexp=5 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
 ```
 
 ## Quantumult X
@@ -50,10 +50,10 @@ hostname = a.china-smartech.com
 hostname = a.china-smartech.com
 
 [rewrite_local]
-https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js
+https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js
 
 [task_local]
-5 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enabled=true
+5 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enabled=true
 ```
 
 ## Stash
@@ -76,7 +76,7 @@ http:
 
 script-providers:
   龙德广场签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js
     interval: 86400
 ```
 

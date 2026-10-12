@@ -12,7 +12,7 @@
 
 1. 在 Loon 中导入插件：
 
-   `https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/paperclip-cookie/paperclip-cookie.lpx`
+   `https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/paperclip-cookie/paperclip-cookie.lpx`
 
 2. 仅开启需要抓取的脚本开关
 3. 打开对应 App 或小程序并进入该脚本 README 所示页面

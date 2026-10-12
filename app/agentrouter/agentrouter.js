@@ -5,7 +5,7 @@
  * 签到:cron 每天 09:00 自动运行，结果未确认时请到网站核对
  *
  * @Author: @773075692 <https://github.com/773075692/agentrouter-checkin>
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-09-12
  *
@@ -17,15 +17,15 @@
  * debug = switch,false,tag=调试模式,desc=仅记录请求状态和签到判定
  *
  * [Script]
- * cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, argument=[{username},{password},{accounts},{debug}], tag=AgentRouter签到, timeout=300, img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png, enable=true
+ * cron "0 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, argument=[{username},{password},{accounts},{debug}], tag=AgentRouter签到, timeout=300, img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png, enable=true
  *
  * ===== Surge =====
  * [Script]
- * AgentRouter签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js,img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png
+ * AgentRouter签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js,img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png
  *
  * ===== Quantumult X =====
  * [task_local]
- * 0 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, tag=AgentRouter签到, img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png, enabled=true
+ * 0 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, tag=AgentRouter签到, img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -36,7 +36,7 @@
  *
  * script-providers:
  *   AgentRouter签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js
  *     interval: 86400
  */
 

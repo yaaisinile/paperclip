@@ -4,7 +4,7 @@
  * 抓取:打开「龙德广场」小程序 → 进「我的」→「签到」页,自动抓 token(JWT 到 2099)
  * 签到:cron 定时自动签到
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-24
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = a.china-smartech.com
  * [Script]
- * http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=龙德广场 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
- * cron "5 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enable=true
+ * http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=龙德广场 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+ * cron "5 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = a.china-smartech.com
  * [Script]
- * 龙德广场 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
- * 龙德广场签到 = type=cron,cronexp=5 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+ * 龙德广场 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
+ * 龙德广场签到 = type=cron,cronexp=5 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = a.china-smartech.com
  * [rewrite_local]
- * https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js
+ * https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js
  * [task_local]
- * 5 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enabled=true
+ * 5 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js, tag=龙德广场签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/longde.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: false
  * script-providers:
  *   龙德广场签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/longde/longde.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/longde/longde.js
  *     interval: 86400
  */
 

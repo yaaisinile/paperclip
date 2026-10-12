@@ -4,7 +4,7 @@
  * 抓取:打开小米商城 APP → 首页「米金商城」→ 进活动页点签到,抓 Cookie
  * 签到:cron 定时自动签到
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-27
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = shop-api.retail.mi.com
  * [Script]
- * http-request ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done) tag=小米商城 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.cookie.js, requires-body=0, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
- * cron "15 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.js, tag=小米商城签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enable=true
+ * http-request ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done) tag=小米商城 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.cookie.js, requires-body=0, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
+ * cron "15 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.js, tag=小米商城签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = %APPEND% shop-api.retail.mi.com
  * [Script]
- * 小米商城 Cookie = type=http-request, pattern=^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done), requires-body=0, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.cookie.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
- * 小米商城签到 = type=cron, cronexp=15 8 * * *, timeout=60, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, script-update-interval=0
+ * 小米商城 Cookie = type=http-request, pattern=^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done), requires-body=0, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.cookie.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png
+ * 小米商城签到 = type=cron, cronexp=15 8 * * *, timeout=60, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, script-update-interval=0
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = shop-api.retail.mi.com
  * [rewrite_local]
- * ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done) url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.cookie.js
+ * ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/mf\/act\/infinite\/(do|done) url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.cookie.js
  * [task_local]
- * 15 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.js, tag=小米商城签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enabled=true
+ * 15 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.js, tag=小米商城签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/mishop.png, enabled=true
  *
  * ===== Stash =====
  * http:
@@ -43,7 +43,7 @@
  *   - name: 小米商城签到
  *     cronexp: "15 8 * * *"
  *     timeout: 60
- *     script-path: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/mishop/mishop.js
+ *     script-path: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/mishop/mishop.js
  */
 
 const $ = new Env('小米商城');

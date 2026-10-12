@@ -5,7 +5,7 @@
  * 抓取②:在超话页手动签到一次,抓签到请求(page/button · X-Validator 与路径绑定,必须分开抓)
  *
  * @Author: @Evilbutcher / @toulanboy
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-09
  */

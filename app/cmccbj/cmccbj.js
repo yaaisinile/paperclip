@@ -4,7 +4,7 @@
  * 抓取:打开中国移动 APP(北京) → 进「签到赢好礼」H5 → 点一次签到,抓 Cookie(token + constid)
  * 签到:cron 定时自动签到(先查状态再签,已签则跳过)
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-24
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = h5.bj.10086.cn
  * [Script]
- * http-request ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ tag=北京移动 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
- * cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enable=true
+ * http-request ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ tag=北京移动 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
+ * cron "20 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = %APPEND% h5.bj.10086.cn
  * [Script]
- * 北京移动 Cookie = type=http-request, pattern=^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/, requires-body=0, max-size=0, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
- * 北京移动签到 = type=cron, cronexp=20 8 * * *, timeout=60, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, script-update-interval=0
+ * 北京移动 Cookie = type=http-request, pattern=^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/, requires-body=0, max-size=0, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png
+ * 北京移动签到 = type=cron, cronexp=20 8 * * *, timeout=60, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, script-update-interval=0
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = h5.bj.10086.cn
  * [rewrite_local]
- * ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
+ * ^https:\/\/h5\.bj\.10086\.cn\/ActSignIn2023\/(getSignIn|doPrize)\/JT\/ url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
  * [task_local]
- * 20 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enabled=true
+ * 20 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js, tag=北京移动签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/cmcc.png, enabled=true
  *
  * ===== Stash =====
  * http:
@@ -43,7 +43,7 @@
  *   - name: 北京移动签到
  *     cronexp: "20 8 * * *"
  *     timeout: 60
- *     script-path: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
+ *     script-path: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/cmccbj/cmccbj.js
  */
 
 const $ = new Env('北京移动');

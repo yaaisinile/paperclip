@@ -28,10 +28,10 @@
 hostname = appapi.lvcchong.com
 
 [Script]
-http-response ^https:\/\/appapi\.lvcchong\.com\/getUnionInfo tag=驴充充 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
-http-response ^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/ tag=驴充充 Auth, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
+http-response ^https:\/\/appapi\.lvcchong\.com\/getUnionInfo tag=驴充充 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
+http-response ^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/ tag=驴充充 Auth, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
 
-cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, tag=驴充充签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png, enable=true
+cron "20 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, tag=驴充充签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png, enable=true
 ```
 
 ## Surge
@@ -41,10 +41,10 @@ cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = appapi.lvcchong.com
 
 [Script]
-驴充充 Cookie = type=http-response,pattern=^https:\/\/appapi\.lvcchong\.com\/getUnionInfo,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
-驴充充 Auth = type=http-response,pattern=^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
+驴充充 Cookie = type=http-response,pattern=^https:\/\/appapi\.lvcchong\.com\/getUnionInfo,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
+驴充充 Auth = type=http-response,pattern=^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
 
-驴充充签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
+驴充充签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png
 ```
 
 ## Quantumult X
@@ -54,11 +54,11 @@ hostname = appapi.lvcchong.com
 hostname = appapi.lvcchong.com
 
 [rewrite_local]
-^https:\/\/appapi\.lvcchong\.com\/getUnionInfo url script-response-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
-^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/ url script-response-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
+^https:\/\/appapi\.lvcchong\.com\/getUnionInfo url script-response-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
+^https:\/\/appapi\.lvcchong\.com\/accessToken\/refresh\/ url script-response-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
 
 [task_local]
-20 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, tag=驴充充签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png, enabled=true
+20 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js, tag=驴充充签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lvcchong.png, enabled=true
 ```
 
 ## Stash
@@ -85,7 +85,7 @@ http:
 
 script-providers:
   驴充充签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/lvcchong/lvcchong.js
     interval: 86400
 ```
 

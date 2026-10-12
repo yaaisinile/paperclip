@@ -26,9 +26,9 @@
 hostname = a.china-smartech.com
 
 [Script]
-http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=北京华联 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
+http-request https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm tag=北京华联 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
 
-cron "8 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, tag=北京华联签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png, enable=true
+cron "8 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, tag=北京华联签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png, enable=true
 ```
 
 ## Surge
@@ -38,9 +38,9 @@ cron "8 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip
 hostname = a.china-smartech.com
 
 [Script]
-北京华联 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
+北京华联 Cookie = type=http-request,pattern=https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
 
-北京华联签到 = type=cron,cronexp=8 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
+北京华联签到 = type=cron,cronexp=8 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png
 ```
 
 ## Quantumult X
@@ -50,10 +50,10 @@ hostname = a.china-smartech.com
 hostname = a.china-smartech.com
 
 [rewrite_local]
-https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js
+https:\/\/a\.china-smartech\.com\/restful\/mall\/\d+\/checkInForm url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js
 
 [task_local]
-8 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, tag=北京华联签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png, enabled=true
+8 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js, tag=北京华联签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/bhg.png, enabled=true
 ```
 
 ## Stash
@@ -76,7 +76,7 @@ http:
 
 script-providers:
   北京华联签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/bhg/bhg.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/bhg/bhg.js
     interval: 86400
 ```
 

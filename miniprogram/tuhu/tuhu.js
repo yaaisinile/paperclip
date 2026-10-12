@@ -6,7 +6,7 @@
  *
  * @Author: @FoKit
  * @Modifier: @Sliverkiss(修复 blackBox 参数)
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>(适配新接口)
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>(适配新接口)
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-08
  *
@@ -14,23 +14,23 @@
  * [MITM]
  * hostname = api.tuhu.cn
  * [Script]
- * http-request https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList) tag=途虎养车 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
- * cron "17 7 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, tag=途虎养车签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png, enable=true
+ * http-request https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList) tag=途虎养车 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
+ * cron "17 7 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, tag=途虎养车签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = api.tuhu.cn
  * [Script]
- * 途虎养车 Cookie = type=http-request,pattern=https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList),requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
- * 途虎养车签到 = type=cron,cronexp=17 7 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
+ * 途虎养车 Cookie = type=http-request,pattern=https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList),requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
+ * 途虎养车签到 = type=cron,cronexp=17 7 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = api.tuhu.cn
  * [rewrite_local]
- * https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList) url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js
+ * https:\/\/api\.tuhu\.cn\/User\/(GetMemberSignInInfoAsync|GetRightsList) url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js
  * [task_local]
- * 17 7 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, tag=途虎养车签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png, enabled=true
+ * 17 7 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js, tag=途虎养车签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/tuhu.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -48,7 +48,7 @@
  *       require-body: false
  * script-providers:
  *   途虎养车签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/tuhu/tuhu.js
  *     interval: 86400
  */
 

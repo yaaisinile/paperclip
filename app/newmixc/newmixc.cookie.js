@@ -3,7 +3,7 @@
  *
  * 抓取:打开「一点万象」APP → 任意页停留 1 秒(触发 getPersonalData),抓 token + 设备参数
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-23
  */

@@ -1,7 +1,7 @@
 /**
  * 节点 IP 质量检测 · 模块化网页测试启动器
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-08-04
  */

@@ -24,9 +24,9 @@
 hostname = popvip.paquapp.com
 
 [Script]
-http-response ^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info) tag=泡泡玛特 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
+http-response ^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info) tag=泡泡玛特 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
 
-cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, tag=泡泡玛特签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png, enable=true
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, tag=泡泡玛特签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png, enable=true
 ```
 
 ## Surge
@@ -36,9 +36,9 @@ cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip
 hostname = popvip.paquapp.com
 
 [Script]
-泡泡玛特 Cookie = type=http-response,pattern=^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
+泡泡玛特 Cookie = type=http-response,pattern=^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
 
-泡泡玛特签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
+泡泡玛特签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png
 ```
 
 ## Quantumult X
@@ -48,10 +48,10 @@ hostname = popvip.paquapp.com
 hostname = popvip.paquapp.com
 
 [rewrite_local]
-^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info) url script-response-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js
+^https:\/\/popvip\.paquapp\.com\/miniapp\/v2\/(svip_lite\/user_info|wechat_message\/template_info) url script-response-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js
 
 [task_local]
-0 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, tag=泡泡玛特签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js, tag=泡泡玛特签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/popmart.png, enabled=true
 ```
 
 ## Stash
@@ -74,7 +74,7 @@ http:
 
 script-providers:
   泡泡玛特签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/ppmt/ppmt.js
     interval: 86400
 ```
 

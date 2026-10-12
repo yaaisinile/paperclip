@@ -3,7 +3,7 @@
  *
  * 通过目标节点访问 Cloudflare 官方测速端点，测量端到端延迟与轻量吞吐。
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Updated: 2026-08-04
  */
 

@@ -3,7 +3,7 @@
  *
  * 抓取:打开「微信支付笔笔省」小程序 → 进「天天领」页,自动抓 session-token
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-12
  */

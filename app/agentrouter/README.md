@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png" width="80" alt="AgentRouter" />
+  <img src="https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png" width="80" alt="AgentRouter" />
 </p>
 
 # AgentRouter
@@ -16,7 +16,7 @@
 
 ## 使用步骤
 
-1. 在 Loon 导入或更新 [AgentRouter 插件](https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.lpx)。
+1. 在 Loon 导入或更新 [AgentRouter 插件](https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.lpx)。
 2. 打开插件设置，单账号填写账号和密码；多账号按下方示例填写「多账号（JSON）」，保存。
 3. 手动运行一次「AgentRouter签到」核对结果，之后每天 **09:00（设备时间）**自动运行。
 
@@ -70,7 +70,7 @@ AgentRouter
 
 ## Loon
 
-[插件地址](https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.lpx) · 无需 MITM、重写或 BoxJS。
+[插件地址](https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.lpx) · 无需 MITM、重写或 BoxJS。
 
 以下内容用于插件内部配置，直接导入插件即可：
 
@@ -82,25 +82,25 @@ accounts = input,"",tag=多账号（JSON）,desc=选填；填写后优先使用�
 debug = switch,false,tag=调试模式,desc=仅记录请求状态和签到判定
 
 [Script]
-cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, argument=[{username},{password},{accounts},{debug}], tag=AgentRouter签到, timeout=300, img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png, enable=true
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, argument=[{username},{password},{accounts},{debug}], tag=AgentRouter签到, timeout=300, img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png, enable=true
 ```
 
 ### 其他平台
 
-Surge、Quantumult X、Stash 继续使用 [BoxJS 正式订阅](https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/paperclip.boxjs.json)中的 **AgentRouter（Surge / QX / Stash）**，填写账号密码并按下方配置添加任务。BoxJS 提供调试开关，以及运行一次后生效并复位的「清除账号信息」。
+Surge、Quantumult X、Stash 继续使用 [BoxJS 正式订阅](https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/paperclip.boxjs.json)中的 **AgentRouter（Surge / QX / Stash）**，填写账号密码并按下方配置添加任务。BoxJS 提供调试开关，以及运行一次后生效并复位的「清除账号信息」。
 
 ## Surge
 
 ```ini
 [Script]
-AgentRouter签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js,img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png
+AgentRouter签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js,img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png
 ```
 
 ## Quantumult X
 
 ```ini
 [task_local]
-0 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, tag=AgentRouter签到, img-url=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/icon.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js, tag=AgentRouter签到, img-url=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/icon.png, enabled=true
 ```
 
 ## Stash
@@ -114,7 +114,7 @@ cron:
 
 script-providers:
   AgentRouter签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/agentrouter/agentrouter.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/agentrouter/agentrouter.js
     interval: 86400
 ```
 

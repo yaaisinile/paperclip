@@ -3,7 +3,7 @@
  *
  * 使用:在 Loon 的节点或策略组页面对目标执行「节点 IP 质量检测」
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Reference: @Roddy-D <https://github.com/Roddy-D/Loon_plugins>
  * @Reference: @xykt <https://github.com/xykt/IPQuality>
  * @Channel: Telegram 频道 https://t.me/mayihei
@@ -11,10 +11,10 @@
  *
  * ===== Loon =====
  * [Script]
- * generic script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
+ * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-07-19.r8";
+const SCRIPT_VERSION = "2026-10-12.r9";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -317,6 +317,7 @@ async function collectMedia() {
         ["Prime Video", testPrimeVideo()],
         ["Reddit", testReddit()],
         ["ChatGPT", testChatGPT()],
+        ["Gemini", testGemini()],
     ];
     const settled = await Promise.all(tests.map((item) => capture(item[1])));
     return tests.map((item, index) => {
@@ -566,6 +567,56 @@ function classifyChatGPTApp(response) {
         return "blocked";
     }
     if (response.status >= 200 && response.status < 400) return "available";
+    return "unknown";
+}
+
+async function testGemini() {
+    const response = await request("GET", "https://gemini.google.com/", {
+        allowHttpErrors: true,
+        timeout: 8000,
+        headers: Object.assign(browserHeaders(), {
+            Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        }),
+    });
+    const state = classifyGemini(response);
+    if (state === "available") return mediaResult("Gemini", "yes", "", "可访问");
+    if (state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持");
+    if (state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流");
+    return mediaResult("Gemini", "unknown", "", "响应不足以确认");
+}
+
+function classifyGemini(response) {
+    if (!response) return "unknown";
+    const status = response.status;
+    const body = String(response.body || "");
+    const headers = (response.response && response.response.headers) || {};
+    const location = String(headers.location || headers.Location || "");
+
+    // 重定向到 Gemini 不支持说明页（如 support.google.com/gemini?p=not_available）
+    if (/support\.google\.com\/gemini/i.test(location) || /[?&]p=not_available/i.test(location)) {
+        return "region-blocked";
+    }
+    // 跟随重定向后落在欧盟同意页，说明地区本身支持，只是需要同意
+    if (/consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body)) {
+        return "available";
+    }
+    // 可用：同域重定向到应用页
+    if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location)) {
+        return "available";
+    }
+    // 地区不支持的统一提示文案（可能直接返回，也可能在重定向后的支持页）
+    if (/not available in your country|not available in your region|your country or region|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
+        return "region-blocked";
+    }
+    // 限流
+    if (status === 429) return "blocked";
+    // 正常可访问的应用页面特征
+    if (status >= 200 && status < 300
+        && (/<title>[^<]*gemini/i.test(body)
+            || /AF_initDataCallback|__NEXT_DATA__|"title"\s*:\s*"Gemini"/i.test(body)
+            || /gemini\.google\.com\/app/i.test(body))) {
+        return "available";
+    }
     return "unknown";
 }
 

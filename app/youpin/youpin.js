@@ -4,7 +4,7 @@
  * 抓取:打开小米有品 APP →「我的」→「红包」页,停留 1 秒抓 Cookie
  * 签到:cron 定时自动签到
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-27
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = m.xiaomiyoupin.com
  * [Script]
- * http-request ^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo tag=有品 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
- * cron "5 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js, tag=有品签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png, enable=true
+ * http-request ^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo tag=有品 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
+ * cron "5 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js, tag=有品签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = m.xiaomiyoupin.com
  * [Script]
- * 有品 Cookie = type=http-request,pattern=^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
- * 有品签到 = type=cron,cronexp=5 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
+ * 有品 Cookie = type=http-request,pattern=^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
+ * 有品签到 = type=cron,cronexp=5 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = m.xiaomiyoupin.com
  * [rewrite_local]
- * ^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js
+ * ^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActInfo url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js
  * [task_local]
- * 5 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js, tag=有品签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png, enabled=true
+ * 5 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js, tag=有品签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: false
  * script-providers:
  *   有品签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/youpin/youpin.js
  *     interval: 86400
  */
 

@@ -37,9 +37,9 @@ App 通道走顶象风控,固定整点签到不理想。脚本内置**当日随�
 hostname = gw2c-hw-open.longfor.com
 
 [Script]
-http-request ^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ tag=龙湖App Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
+http-request ^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ tag=龙湖App Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
 
-cron "0-59/19 8-10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enable=true
+cron "0-59/19 8-10 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enable=true
 ```
 
 ## Surge
@@ -49,9 +49,9 @@ cron "0-59/19 8-10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/
 hostname = gw2c-hw-open.longfor.com
 
 [Script]
-龙湖App Cookie = type=http-request,pattern=^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
+龙湖App Cookie = type=http-request,pattern=^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
 
-龙湖App签到 = type=cron,cronexp=0-59/19 8-10 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
+龙湖App签到 = type=cron,cronexp=0-59/19 8-10 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
 ```
 
 ## Quantumult X
@@ -61,10 +61,10 @@ hostname = gw2c-hw-open.longfor.com
 hostname = gw2c-hw-open.longfor.com
 
 [rewrite_local]
-^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js
+^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js
 
 [task_local]
-0-59/19 8-10 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enabled=true
+0-59/19 8-10 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enabled=true
 ```
 
 ## Stash
@@ -87,7 +87,7 @@ http:
 
 script-providers:
   龙湖App签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/lhtj/lhtj.js
     interval: 86400
 ```
 

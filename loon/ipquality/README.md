@@ -21,19 +21,19 @@
 
 ```ini
 [Script]
-generic script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
+generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
 ```
 
 也可直接导入插件：
 
-`https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/ipquality/ipquality.lpx`
+`https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.lpx`
 
 ## 插件参数
 
 | 参数 | 默认值 | 说明 |
 |---|---:|---|
 | `MaskIP` | 关闭 | 隐藏报告中 IP 的后半段，适合截图分享 |
-| `MediaTest` | 开启 | 检测 TikTok、Disney+、Netflix、YouTube、Prime Video、Reddit、ChatGPT |
+| `MediaTest` | 开启 | 检测 TikTok、Disney+、Netflix、YouTube、Prime Video、Reddit、ChatGPT、Gemini |
 | `MapNotification` | 关闭 | 完成后发送通知；点按通知可在 Apple 地图查看 IP 数据库估算的位置 |
 
 ## 报告内容
@@ -54,6 +54,7 @@ generic script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/hea
 
 | 日期 | 变更 |
 |---|---|
+| 2026-10-12 | r9：新增 Gemini 可用性检测，用于筛选出口所在国家/地区不支持的节点 |
 | 2026-07-19 | r8：补充 ASN/组织、IPPure 分流出口识别、Apple 地图通知与多源稳定性修复 |
 | 2026-07-18 | r1：初版进入 testing |
 

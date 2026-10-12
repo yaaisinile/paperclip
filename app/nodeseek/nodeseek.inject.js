@@ -4,7 +4,7 @@
  * 抓取：用 Safari 打开 nodeseek.com 任意页面
  * 签到：Safari 打开 nodeseek.com 时自动触发（浏览器备用方案，无需 cron）
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-26
  *
@@ -13,19 +13,19 @@
  * hostname = www.nodeseek.com
  * [Script]
  * # 注入签到脚本 + 抓签到结果（requires-body=true，匹配 HTML 页面和签到接口响应）
- * http-response ^https://www\.nodeseek\.com/ tag=NodeSeek Inject, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/nodeseek.png
+ * http-response ^https://www\.nodeseek\.com/ tag=NodeSeek Inject, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/nodeseek.png
  *
  * ===== Surge =====
  * [MITM]
  * hostname = www.nodeseek.com
  * [Script]
- * NodeSeek Inject = type=http-response,pattern=^https://www\.nodeseek\.com/,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/nodeseek.png
+ * NodeSeek Inject = type=http-response,pattern=^https://www\.nodeseek\.com/,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/nodeseek.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = www.nodeseek.com
  * [rewrite_local]
- * ^https://www\.nodeseek\.com/ url script-response-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js
+ * ^https://www\.nodeseek\.com/ url script-response-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js
  *
  * ===== Stash =====
  * http:
@@ -38,7 +38,7 @@
  *       require-body: true
  * script-providers:
  *   NodeSeek Inject:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/nodeseek/nodeseek.inject.js
  *     interval: 86400
  */
 

@@ -16,7 +16,7 @@
 ```bash
 mkdir -p /opt/ns-relay
 wget -O /opt/ns-relay/relay.py \
-  https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/nodeseek/relay.py
+  https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/nodeseek/relay.py
 ```
 
 ### 2. 生成 API Key
@@ -120,6 +120,6 @@ Loon cron 发出的请求通常不走代理，所以必须保证手机当前网�
 
 ```bash
 wget -O /opt/ns-relay/relay.py \
-  https://raw.githubusercontent.com/MaYIHEI/paperclip/main/app/nodeseek/relay.py
+  https://raw.githubusercontent.com/yaaisinile/paperclip/main/app/nodeseek/relay.py
 systemctl restart ns-relay
 ```

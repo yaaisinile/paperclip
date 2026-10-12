@@ -104,9 +104,9 @@ feat: 新增 jd 脚本(京东每日签到)
 hostname = <域名>
 
 [Script]
-http-request <重写正则> tag=<显示名> Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, requires-body=false, img-url=<pin 图标 URL>
+http-request <重写正则> tag=<显示名> Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, requires-body=false, img-url=<pin 图标 URL>
 
-cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, tag=<显示名>签到, img-url=<pin 图标 URL>, enable=true
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, tag=<显示名>签到, img-url=<pin 图标 URL>, enable=true
 ```
 
 ## Surge
@@ -116,9 +116,9 @@ cron "0 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip
 hostname = <域名>
 
 [Script]
-<显示名> Cookie = type=http-request,pattern=<重写正则>,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js,img-url=<pin 图标 URL>
+<显示名> Cookie = type=http-request,pattern=<重写正则>,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js,img-url=<pin 图标 URL>
 
-<显示名>签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js,img-url=<pin 图标 URL>
+<显示名>签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js,img-url=<pin 图标 URL>
 ```
 
 ## Quantumult X
@@ -128,10 +128,10 @@ hostname = <域名>
 hostname = <域名>
 
 [rewrite_local]
-<重写正则> url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js
+<重写正则> url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js
 
 [task_local]
-0 9 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, tag=<显示名>签到, img-url=<pin 图标 URL>, enabled=true
+0 9 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js, tag=<显示名>签到, img-url=<pin 图标 URL>, enabled=true
 ```
 
 ## Stash
@@ -154,7 +154,7 @@ http:
 
 script-providers:
   <显示名>签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/<分类>/<脚本名>/<脚本名>.js
     interval: 86400
 ```
 
@@ -195,7 +195,7 @@ script-providers:
  * 签到:cron <做什么>(<可选提示;细节见 README>)
  *
  * @Author: <自研写 MaYIHEI <url>;改造他人脚本写原作者,带 @>
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>   // 仅改造他人脚本时加,自研删掉
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>   // 仅改造他人脚本时加,自研删掉
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: YYYY-MM-DD
  *

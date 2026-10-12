@@ -3,7 +3,7 @@
  *
  * 抓取:打开小米商城 APP → 首页「米金商城」→ 点签到,触发 do/done 抓 cookie + userId + headers
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-27
  */

@@ -24,9 +24,9 @@
 hostname = cn-wxmall.dreame.tech
 
 [Script]
-http-request ^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info tag=追觅 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
+http-request ^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info tag=追觅 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
 
-cron "33 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js, tag=追觅签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png, enable=true
+cron "33 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js, tag=追觅签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png, enable=true
 ```
 
 ## Surge
@@ -36,9 +36,9 @@ cron "33 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = cn-wxmall.dreame.tech
 
 [Script]
-追觅 Cookie = type=http-request,pattern=^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
+追觅 Cookie = type=http-request,pattern=^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info,requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
 
-追觅签到 = type=cron,cronexp=33 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
+追觅签到 = type=cron,cronexp=33 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png
 ```
 
 ## Quantumult X
@@ -48,10 +48,10 @@ hostname = cn-wxmall.dreame.tech
 hostname = cn-wxmall.dreame.tech
 
 [rewrite_local]
-^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js
+^https:\/\/cn-wxmall\.dreame\.tech\/main\/my\/info url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js
 
 [task_local]
-33 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js, tag=追觅签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png, enabled=true
+33 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js, tag=追觅签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/dreame.png, enabled=true
 ```
 
 ## Stash
@@ -74,7 +74,7 @@ http:
 
 script-providers:
   追觅签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/dreame/dreame.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/dreame/dreame.js
     interval: 86400
 ```
 

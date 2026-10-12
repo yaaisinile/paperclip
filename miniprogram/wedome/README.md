@@ -30,9 +30,9 @@
 hostname = scrm-b.zjian.net
 
 [Script]
-http-response ^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find) tag=味多美 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
+http-response ^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find) tag=味多美 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
 
-cron "10 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, tag=味多美签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png, enable=true
+cron "10 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, tag=味多美签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png, enable=true
 ```
 
 ## Surge
@@ -42,9 +42,9 @@ cron "10 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/papercli
 hostname = scrm-b.zjian.net
 
 [Script]
-味多美 Cookie = type=http-response,pattern=^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
+味多美 Cookie = type=http-response,pattern=^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
 
-味多美签到 = type=cron,cronexp=10 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
+味多美签到 = type=cron,cronexp=10 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
 ```
 
 ## Quantumult X
@@ -54,10 +54,10 @@ hostname = scrm-b.zjian.net
 hostname = scrm-b.zjian.net
 
 [rewrite_local]
-^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find) url script-response-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js
+^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find) url script-response-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js
 
 [task_local]
-10 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, tag=味多美签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png, enabled=true
+10 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, tag=味多美签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png, enabled=true
 ```
 
 ## Stash
@@ -80,7 +80,7 @@ http:
 
 script-providers:
   味多美签到:
-    url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js
+    url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/wedome/wedome.js
     interval: 86400
 ```
 

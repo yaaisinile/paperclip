@@ -4,7 +4,7 @@
  * 抓取:打开「WPS」APP → 进任意活动页(任务中心/福利中心)→ 自动触发 page_info,抓 wps_sid
  * 签到:cron 10 点触发,抢完限量爆款顺手做签到等其余任务,逐个串行、动作间随机间隔(细节见 README)
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-27
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = personal-act.wps.cn
  * [Script]
- * http-request ^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info tag=WPS Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
- * cron "0 10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.js, tag=WPS签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png, enable=true
+ * http-request ^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info tag=WPS Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.cookie.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
+ * cron "0 10 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.js, tag=WPS签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = personal-act.wps.cn
  * [Script]
- * WPS Cookie = type=http-request,pattern=^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
- * WPS签到 = type=cron,cronexp=0 10 * * *,timeout=120,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
+ * WPS Cookie = type=http-request,pattern=^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
+ * WPS签到 = type=cron,cronexp=0 10 * * *,timeout=120,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = personal-act.wps.cn
  * [rewrite_local]
- * ^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info url script-request-header https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.cookie.js
+ * ^https:\/\/personal-act\.wps\.cn\/activity-rubik\/activity\/page_info url script-request-header https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.cookie.js
  * [task_local]
- * 0 10 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.js, tag=WPS签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png, enabled=true
+ * 0 10 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.js, tag=WPS签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wps.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: false
  * script-providers:
  *   WPS签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/wps/wps.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/wps/wps.js
  *     interval: 86400
  */
 

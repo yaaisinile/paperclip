@@ -6,7 +6,7 @@
  * 签到:cron 定时自动签到
  *
  * @Author: @Evilbutcher (https://github.com/evilbutcher) / @toulanboy (https://github.com/toulanboy/scripts)
- * @Modifier: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Modifier: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-05-11
  *
@@ -14,23 +14,23 @@
  * [MITM]
  * hostname = api.weibo.cn
  * [Script]
- * http-request ^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button) tag=微博超话 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
- * cron "0 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.js, tag=微博超话签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png, enable=true
+ * http-request ^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button) tag=微博超话 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
+ * cron "0 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.js, tag=微博超话签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = api.weibo.cn
  * [Script]
- * 微博超话 Cookie = type=http-request,pattern=^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
- * 微博超话签到 = type=cron,cronexp=0 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
+ * 微博超话 Cookie = type=http-request,pattern=^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
+ * 微博超话签到 = type=cron,cronexp=0 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = api.weibo.cn
  * [rewrite_local]
- * ^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button) url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js
+ * ^https:\/\/api\.weibo\.cn\/2\/(statuses\/container_timeline_topicsub|page\/button) url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.cookie.js
  * [task_local]
- * 0 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.js, tag=微博超话签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png, enabled=true
+ * 0 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.js, tag=微博超话签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/weibo.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -48,7 +48,7 @@
  *       require-body: true
  * script-providers:
  *   微博超话签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/weibotalk/weibotalk.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/app/weibotalk/weibotalk.js
  *     interval: 86400
  */
 

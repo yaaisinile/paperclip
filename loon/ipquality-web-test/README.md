@@ -8,7 +8,7 @@
 
 导入插件：
 
-`https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/loon/ipquality-web-test/ipquality-web-test.lpx?v=poc12`
+`https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality-web-test/ipquality-web-test.lpx?v=poc12`
 
 节点或策略组页面提供四个入口：基础信息、风险、流媒体与 AI 三项快捷检测直接显示 Loon 原生结果；“IP 自选检测 · 网页”通过通知进入 Safari，可选择一项或多项。
 

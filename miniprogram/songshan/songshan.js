@@ -4,7 +4,7 @@
  * 抓取:打开「松山棉店」小程序 → 进「签到」页(自动触发 signMainInfo),抓凭据
  * 签到:cron 定时自动签到
  *
- * @Author: MaYIHEI <https://github.com/MaYIHEI/paperclip>
+ * @Author: MaYIHEI <https://github.com/yaaisinile/paperclip>
  * @Channel: Telegram 频道 https://t.me/mayihei
  * @Updated: 2026-06-04
  *
@@ -12,23 +12,23 @@
  * [MITM]
  * hostname = xapi.weimob.com
  * [Script]
- * http-request ^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)) tag=松山棉店 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
- * cron "20 8 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, tag=松山棉店签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png, enable=true
+ * http-request ^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)) tag=松山棉店 Cookie, script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
+ * cron "20 8 * * *" script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, tag=松山棉店签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png, enable=true
  *
  * ===== Surge =====
  * [MITM]
  * hostname = xapi.weimob.com
  * [Script]
- * 松山棉店 Cookie = type=http-request,pattern=^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
- * 松山棉店签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
+ * 松山棉店 Cookie = type=http-request,pattern=^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)),requires-body=true,max-size=0,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
+ * 松山棉店签到 = type=cron,cronexp=20 8 * * *,timeout=60,script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js,img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png
  *
  * ===== Quantumult X =====
  * [MITM]
  * hostname = xapi.weimob.com
  * [rewrite_local]
- * ^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)) url script-request-body https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js
+ * ^https:\/\/xapi\.weimob\.com\/api3\/onecrm\/mactivity\/sign\/misc\/sign\/activity\/(c\/signMainInfo|core\/c\/(getActivityInfo|sign)) url script-request-body https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js
  * [task_local]
- * 20 8 * * * https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, tag=松山棉店签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png, enabled=true
+ * 20 8 * * * https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js, tag=松山棉店签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/songshan.png, enabled=true
  *
  * ===== Stash =====
  * cron:
@@ -46,7 +46,7 @@
  *       require-body: true
  * script-providers:
  *   松山棉店签到:
- *     url: https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/songshan/songshan.js
+ *     url: https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/miniprogram/songshan/songshan.js
  *     interval: 86400
  */
 
