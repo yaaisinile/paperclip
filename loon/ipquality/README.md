@@ -61,6 +61,7 @@ generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/
 | 2026-10-12 | r13：修正反向误判（不可用节点显示可用）——`\"45631641\":true` 是**所有节点都有的全局功能标志**（含被风控/地区不支持节点），不能作可用信号；改以 WIZ 应用数据令牌 `45631641,null,true` 为唯一可用信号（Google 仅在该出口真正可用时内嵌），只有全局标志而无 WIZ 令牌的页面判为「地区不支持 / IP 被风控」 |
 | 2026-10-12 | r14：修正"全可用/全不可用"二值误判——实测确认 `45631641`（无论 `,null,true` 还是 `":true`）是 Google 在**每个** Gemini 页面都嵌入的全局功能标志，与出口国家无关，作为信号会导致所有节点同值；改为**基于页面内容**判定：含 "not available in your country" 文案或 `not_available` 重定向 → 地区不支持；落地为 Gemini 应用页（标题含 Gemini）→ 可访问；其余 → 未确认（绝不误判）。配套 web 测试版 SOURCE_URL 同步、缓存戳 poc19 |
 | 2026-10-12 | r15：按用户反馈加**版本日期时间**（便于确认是否更新成功）+ **Gemini 诊断指纹**；实测确认「不支持地区」匿名请求也返回同款 Gemini 应用壳（静态 HTML 无 not-available 文案），故 r14 的"应用壳→可用"会把不支持节点误判为可用，且 `,2,1,200,"XXX"` 地区码非出口地理（US 节点取到 TWN、JP 节点取到 USA）。诊断指纹把 ST/TT/NAV/NAVR/G/W/C/ADV/CMP/SIGN/RC 等信号随结果输出，待用户回传「支持/不支持」两节点的指纹以定位真实区分信号。版本号形如 `2026-10-12 17:24 (r15)`，web 测试版 poc20 |
+| 2026-10-12 | r16：用户回传双节点指纹**完全一致**（ST=200 TT=1 G=1 CMP=1 SIGN=1，仅 RC 互换），证实静态落地页无判别力。改以 **Gemini API 端点地区裁决**为主判据：`generativelanguage.googleapis.com/v1beta/models` 由 Google 按出口 IP 服务端判定（同一套私有地理风控库）——支持地区返回 `400 API key not valid`（位置检查先通过才轮到 key 校验），不支持地区返回 `403 User location is not supported for the API use.`；429 判限流；API 不可用时回退落地页信号，应用壳单独出现不再判可用（归 unknown）。web 测试版 poc22 |
 | 2026-07-19 | r8：补充 ASN/组织、IPPure 分流出口识别、Apple 地图通知与多源稳定性修复 |
 | 2026-07-18 | r1：初版进入 testing |
 
