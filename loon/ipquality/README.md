@@ -57,6 +57,7 @@ generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/
 | 2026-10-12 | r9：新增 Gemini 可用性检测，用于筛选出口所在国家/地区不支持的节点 |
 | 2026-10-12 | r10：重写 Gemini 判定——以落地页内嵌应用数据令牌（`45631641,null,true`）为核心信号（对齐 RegionRestrictionCheck 口径），可提取地区码；移除「标题含 Gemini 即可用」的误判源；落地页无令牌判为不可用（覆盖 Google 风控标记机房 IP 的情形） |
 | 2026-10-12 | r11：修正令牌匹配——实测当前落地页令牌为 JSON 键 `"45631641":true`（非旧格式 `45631641,null,true`），修复可用节点被误判不支持；新增 `":false` 直接判不可用 |
+| 2026-10-12 | r12：修复可用节点仍误判不可用——根因是页面里引号被转义为 `\"45631641\":true`、且支持页页脚含 `support.google.com/gemini?p=avatar` 帮助链接被旧规则误判；改为兼容转义引号、仅在 3xx 重定向 Location 指向说明页或带 `not_available` 参数时判不可用，并用桌面 Chrome UA 与无斜杠 URL；无令牌且无负面信号时判未确认而非不可用 |
 | 2026-07-19 | r8：补充 ASN/组织、IPPure 分流出口识别、Apple 地图通知与多源稳定性修复 |
 | 2026-07-18 | r1：初版进入 testing |
 

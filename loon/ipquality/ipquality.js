@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12.r11";
+const SCRIPT_VERSION = "2026-10-12.r12";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -571,12 +571,14 @@ function classifyChatGPTApp(response) {
 }
 
 async function testGemini() {
-    const response = await request("GET", "https://gemini.google.com/", {
+    const response = await request("GET", "https://gemini.google.com", {
         allowHttpErrors: true,
-        timeout: 8000,
-        headers: Object.assign(browserHeaders(), {
+        timeout: 10000,
+        headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        }),
+            "Accept-Language": "en-US,en;q=0.9",
+        },
     });
     const verdict = classifyGemini(response);
     if (verdict.state === "available") {
@@ -594,36 +596,39 @@ function classifyGemini(response) {
     const headers = (response.response && response.response.headers) || {};
     const location = String(headers.location || headers.Location || "");
 
-    // 重定向到 Gemini 不支持说明页（如 support.google.com/gemini?p=not_available）
-    if (/support\.google\.com\/gemini/i.test(location) || /[?&]p=not_available/i.test(location)
-        || /support\.google\.com\/gemini/i.test(body)) {
+    // 重定向到 Gemini 不支持说明页：仅当 3xx 跳转到 support.google.com/gemini，或带 not_available 参数
+    // （支持的页面页脚也含 support.google.com/gemini 帮助链接，不能据此判不可用）
+    if (status >= 300 && status < 400 && /support\.google\.com\/gemini/i.test(location)) {
+        return { state: "region-blocked" };
+    }
+    if (/[?&]p=not_available/i.test(location) || /[?&]p=not_available/i.test(body)) {
         return { state: "region-blocked" };
     }
     // 明确的地区不支持提示文案
     if (/not available in your (?:country|region)|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
         return { state: "region-blocked" };
     }
-    // 应用数据明确为 false：地区不可用（Google 把可用性内嵌在 WIZ 数据中）
-    if (/"45631641"\s*:\s*false/.test(body)) {
+    // 应用数据可用性标志：45631641 后跟 :true 为可用，:false 为不可用；引号可能被转义，需兼容
+    // 仅当标志为 false 才判不可用，标志缺失时不误判为不可用
+    if (/45631641[^a-z0-9]*:\s*false/.test(body) || /45631641,null,false/.test(body)) {
         return { state: "region-blocked" };
     }
     // 限流 / Google 风控验证页
-    if (status === 429 || /\/sorry\//i.test(location) || /unusual traffic/i.test(body)) {
+    if (status === 429 || /\bsorry\b/i.test(location) || /unusual traffic/i.test(body)) {
         return { state: "blocked" };
     }
-    // 地区可用：落地页内嵌应用数据令牌（当前键为 "45631641":true，兼容旧 WIZ 数组格式 45631641,null,true）
-    if (/"45631641"\s*:\s*true/.test(body) || /45631641,null,true/.test(body)) {
-        const regionMatch = body.match(/,2,1,200,"([A-Z]{2,3})"/);
+    // 地区可用：落地页内嵌应用数据令牌（45631641 后跟 :true），兼容旧格式 45631641,null,true
+    if (/45631641[^a-z0-9]*:\s*true/.test(body) || /45631641,null,true/.test(body)) {
+        const regionMatch = body.match(/,2,1,200,\\?"([A-Z]{2,3})\\?"/);
         return { state: "available", region: regionMatch ? regionMatch[1] : "" };
     }
     // 欧盟/英国法定同意页：地区本身支持，仅需 cookie 同意
     if (/consent\.google\.com/i.test(location) || /consent\.google\.com/i.test(body)) {
         return { state: "available" };
     }
-    // 落地页正常返回但缺少应用数据令牌：地区不可用，或 IP 被 Google 风控标记
-    // （Google 对被标记的机房 IP 同样返回无令牌落地页，浏览器实测会提示所在国家/地区不支持）
+    // 拿到 Gemini 页面但无可用性令牌、也无不支持文案：不足以判定，不误判为不可用
     if (/<title>[^<]*gemini/i.test(body) || /gemini\.google\.com/i.test(body)) {
-        return { state: "region-blocked" };
+        return { state: "unknown" };
     }
     // 其余情形（如 Loon 未跟随重定向的 3xx、空响应等）不足以判断
     return { state: "unknown" };
