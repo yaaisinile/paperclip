@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12.r10";
+const SCRIPT_VERSION = "2026-10-12.r11";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -603,12 +603,16 @@ function classifyGemini(response) {
     if (/not available in your (?:country|region)|isn't available in your country|is not available in your country|not supported in your (?:country|region)/i.test(body)) {
         return { state: "region-blocked" };
     }
+    // 应用数据明确为 false：地区不可用（Google 把可用性内嵌在 WIZ 数据中）
+    if (/"45631641"\s*:\s*false/.test(body)) {
+        return { state: "region-blocked" };
+    }
     // 限流 / Google 风控验证页
     if (status === 429 || /\/sorry\//i.test(location) || /unusual traffic/i.test(body)) {
         return { state: "blocked" };
     }
-    // 地区可用：落地页内嵌应用数据令牌（对齐 RegionRestrictionCheck 社区口径）
-    if (/45631641,null,true/.test(body)) {
+    // 地区可用：落地页内嵌应用数据令牌（当前键为 "45631641":true，兼容旧 WIZ 数组格式 45631641,null,true）
+    if (/"45631641"\s*:\s*true/.test(body) || /45631641,null,true/.test(body)) {
         const regionMatch = body.match(/,2,1,200,"([A-Z]{2,3})"/);
         return { state: "available", region: regionMatch ? regionMatch[1] : "" };
     }
