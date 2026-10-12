@@ -7,8 +7,8 @@
  * @Updated: 2026-10-12
  */
 
-const QUICK_VERSION = "2026-10-12.poc15";
-const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/cf519e28988fd21ecbbe90fbb5552ca3cbb42993/loon/ipquality/ipquality.js";
+const QUICK_VERSION = "2026-10-12.poc16";
+const SOURCE_URL = "https://raw.githubusercontent.com/yaaisinile/paperclip/a17b76767bcf662ff1b873f89c5a7245f16bf163/loon/ipquality/ipquality.js";
 const params = typeof $environment !== "undefined" && $environment.params
     ? $environment.params
     : {};
