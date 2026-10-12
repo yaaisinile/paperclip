@@ -14,12 +14,16 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12 17:36 (r16)";
+const SCRIPT_VERSION = "2026-10-12 17:50 (r17)";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
 const IPAPI_COM_URL = "http://ip-api.com/json/";
 const IPQUALITY_BACKEND = "https://ipinfo.check.place";
+// Gemini 网页版明确不支持的地区（小范围黑名单，仅覆盖 Google 按合规限制的国家/地区）。
+// 注意：香港/澳门/台湾均在 Gemini 网页版官方支持列表(230+ 国家/地区)内，故不在此列；
+// 这些地区节点访问不了通常是节点本身为 VPN/机房 IP 被 Google 按 IP 信誉拦截，由下方 datacenter 判定处理。
+const GEMINI_UNSUPPORTED = ["RU", "BY", "IR", "KP", "SY", "CU", "AF"];
 const USER_AGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1";
 const DISNEY_CLIENT_TOKEN = "ZGlzbmV5JmJyb3dzZXImMS4wLjA.Cu56AgSfBTDag5NiRA81oLHkDZfu5L3CKadnefEAY84";
 
@@ -46,7 +50,7 @@ async function run() {
 
     const ip = discovery.ip;
     const databaseTask = collectDatabases(ip, discovery);
-    const mediaTask = mediaEnabled ? collectMedia() : Promise.resolve([]);
+    const mediaTask = mediaEnabled ? collectMedia(databaseTask) : Promise.resolve([]);
     const results = await Promise.all([databaseTask, mediaTask]);
     render(ip, results[0], results[1]);
 }
@@ -308,7 +312,7 @@ function databaseIPMismatch(key, value, expectedIP) {
         : `响应 IP ${reported} 与检测 IP ${expectedIP} 不一致`;
 }
 
-async function collectMedia() {
+async function collectMedia(geoPromise) {
     const tests = [
         ["TikTok", testTikTok()],
         ["Disney+", testDisneyPlus()],
@@ -317,7 +321,7 @@ async function collectMedia() {
         ["Prime Video", testPrimeVideo()],
         ["Reddit", testReddit()],
         ["ChatGPT", testChatGPT()],
-        ["Gemini", testGemini()],
+        ["Gemini", testGemini(geoPromise)],
     ];
     const settled = await Promise.all(tests.map((item) => capture(item[1])));
     return tests.map((item, index) => {
@@ -570,47 +574,54 @@ function classifyChatGPTApp(response) {
     return "unknown";
 }
 
-async function testGemini() {
-    const headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-    };
-    // 主判据：Gemini API 端点由 Google 按出口 IP 直接做地区裁决（同一套私有地理风控库）。
-    // 支持地区 → 400 "API key not valid"（位置检查先通过，才轮到 key 校验）；
-    // 不支持地区 → 403 "User location is not supported for the API use."。
-    // 该判定是纯服务端静态响应，不依赖 JS，且就是 Google 自己对出口 IP 的归属裁决。
-    const web = await request("GET", "https://gemini.google.com", {
-        allowHttpErrors: true,
-        timeout: 10000,
-        headers,
-    }).catch(() => null);
-    const api = await request("GET", "https://generativelanguage.googleapis.com/v1beta/models?key=region-check", {
-        allowHttpErrors: true,
-        timeout: 10000,
-        headers: { "User-Agent": headers["User-Agent"], Accept: "application/json" },
-    }).catch(() => null);
-
-    const verdict = classifyGemini(web);
-    const apiStatus = api ? api.status : 0;
-    const apiBody = String((api && api.body) || "");
-    const apiLocationBlocked = apiStatus === 403 && /location is not supported|not supported for the api use|region restriction/i.test(apiBody);
-    const apiKeyGate = apiStatus === 400 && /api key not valid/i.test(apiBody);
-    const apiDiag = `API=${apiStatus || "ERR"}${apiLocationBlocked ? " LOC-BLOCKED" : apiKeyGate ? " KEY-GATE" : ""}`;
-
-    // API 裁决优先：400（key 校验）= 位置已通过；403 location = 位置不支持
-    if (apiLocationBlocked) return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + apiDiag);
-    if (apiStatus === 429) return mediaResult("Gemini", "no", "", "连接受限或限流 · " + apiDiag);
-    if (apiKeyGate) {
-        // 位置通过。落地页若出现明确不支持文案（如 IP 被标记的特殊场景），以落地页为准
-        if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + verdict.diag + " " + apiDiag);
-        return mediaResult("Gemini", "yes", "", "解锁 · " + apiDiag);
+async function testGemini(geoPromise) {
+    // Gemini 网页版地区可用性无法直接由落地页/API 端点判定（实测结论）：
+    //  - 匿名落地页在「支持/不支持」出口下完全一致，无判别力（r15 双节点指纹相同）；
+    //  - generativelanguage API 在 key 校验路径不做地区拦截，任何可达 IP 都返回 400，
+    //    故 API=400/403 不能作为地区信号（r16 实测：香港与美国节点均 400）。
+    // 可靠的代理信号来自 Google 自身的 IP 信誉风控：Gemini 对数据中心/代理 IP 拦截更严
+    // （各类“所在国家不支持”诊断均指向机房/中转 IP 被 Google 按信誉拦截，与出口国家无关）。
+    // 因此以本脚本已抓取的出口 IP geo 数据为主判据：
+    //  - 机房/数据中心/代理 IP(hosting/proxy/vpn) → 大概率被拦截；
+    //  - 国家不在 Gemini 网页版支持列表 → 地区不支持；
+    //  - 其余（干净住宅/原生 IP 且地区支持）→ 可访问。
+    const data = (geoPromise && (await geoPromise.catch(() => null))) || {};
+    const v = geminiGeoVerdict(data);
+    if (v.state === "datacenter") {
+        return mediaResult("Gemini", "no", v.country || "", "机房/代理IP · Google易拦截 · " + v.reason);
     }
-    // API 不可用时回退落地页信号（应用壳单独出现不再视为可用——两种节点均返回同款壳）
-    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + verdict.diag + " " + apiDiag);
-    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流 · " + verdict.diag + " " + apiDiag);
-    if (verdict.state === "available") return mediaResult("Gemini", "yes", "", "解锁 · " + verdict.diag + " " + apiDiag);
-    return mediaResult("Gemini", "unknown", "", "响应不足以确认 · " + verdict.diag + " " + apiDiag);
+    if (v.state === "region-blocked") {
+        return mediaResult("Gemini", "no", v.country || "", "所在国家/地区不支持 · " + v.reason);
+    }
+    if (v.state === "available") {
+        return mediaResult("Gemini", "yes", v.country || "", "解锁 · " + v.reason);
+    }
+    return mediaResult("Gemini", "unknown", v.country || "", "地理信息不足 · " + v.reason);
+}
+
+function geminiGeoVerdict(data) {
+    const ipApiCom = (data.ipApiCom && data.ipApiCom.status === "success") ? data.ipApiCom : {};
+    const proxycheck = proxycheckRecord(data.proxycheck) || {};
+    const rawCC = ipApiCom.countryCode
+        || (data.maxmind && data.maxmind.Country && data.maxmind.Country.IsoCode)
+        || (data.ipinfo && data.ipinfo.country) || "";
+    const country = /^[A-Za-z]{2}$/.test(String(rawCC).trim()) ? String(rawCC).trim().toUpperCase() : "";
+    const hosting = ipApiCom.hosting === true;
+    const ipApiProxy = ipApiCom.proxy === true;
+    const pcProxy = ["proxy", "vpn"].some((k) => {
+        const val = proxycheck[k];
+        return val === 1 || val === true || val === "1" || val === "yes";
+    });
+    const proxy = ipApiProxy || pcProxy;
+    const org = String(ipApiCom.asname || ipApiCom.org || proxycheck.organisation || "").slice(0, 28);
+    const reason = `CC=${country || "-"} HOST=${hosting ? 1 : 0} PROXY=${proxy ? 1 : 0} ORG=${org}`;
+    if (!country) return { state: "unknown", country: "", reason };
+    // 1) 机房/数据中心/代理 IP：Google 对 Gemini 按 IP 信誉严拦截，与出口国家无关
+    if (hosting || proxy) return { state: "datacenter", country, reason };
+    // 2) 国家不在 Gemini 网页版支持列表（仅覆盖 Google 明确合规限制的地区）
+    if (GEMINI_UNSUPPORTED.indexOf(country) >= 0) return { state: "region-blocked", country, reason };
+    // 3) 地区支持且为干净住宅/原生 IP
+    return { state: "available", country, reason };
 }
 
 function classifyGemini(response) {
