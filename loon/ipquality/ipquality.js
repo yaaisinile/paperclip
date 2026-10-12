@@ -14,7 +14,7 @@
  * generic script-path=https://raw.githubusercontent.com/yaaisinile/paperclip/refs/heads/main/loon/ipquality/ipquality.js, tag=节点 IP 质量检测, timeout=50, img-url=shield.lefthalf.filled.system, enable=true
  */
 
-const SCRIPT_VERSION = "2026-10-12 17:24 (r15)";
+const SCRIPT_VERSION = "2026-10-12 17:36 (r16)";
 const IPPURE_URL = "https://my.ippure.com/v1/info";
 const IPIFY_URL = "https://api4.ipify.org?format=json";
 const IPAPI_URL = "https://api.ipapi.is/";
@@ -571,23 +571,46 @@ function classifyChatGPTApp(response) {
 }
 
 async function testGemini() {
-    const response = await request("GET", "https://gemini.google.com", {
+    const headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+    };
+    // 主判据：Gemini API 端点由 Google 按出口 IP 直接做地区裁决（同一套私有地理风控库）。
+    // 支持地区 → 400 "API key not valid"（位置检查先通过，才轮到 key 校验）；
+    // 不支持地区 → 403 "User location is not supported for the API use."。
+    // 该判定是纯服务端静态响应，不依赖 JS，且就是 Google 自己对出口 IP 的归属裁决。
+    const web = await request("GET", "https://gemini.google.com", {
         allowHttpErrors: true,
         timeout: 10000,
-        headers: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-        },
-    });
-    const verdict = classifyGemini(response);
-    const diag = verdict.diag || "";
-    if (verdict.state === "available") {
-        return mediaResult("Gemini", "yes", "", "解锁 · " + diag);
+        headers,
+    }).catch(() => null);
+    const api = await request("GET", "https://generativelanguage.googleapis.com/v1beta/models?key=region-check", {
+        allowHttpErrors: true,
+        timeout: 10000,
+        headers: { "User-Agent": headers["User-Agent"], Accept: "application/json" },
+    }).catch(() => null);
+
+    const verdict = classifyGemini(web);
+    const apiStatus = api ? api.status : 0;
+    const apiBody = String((api && api.body) || "");
+    const apiLocationBlocked = apiStatus === 403 && /location is not supported|not supported for the api use|region restriction/i.test(apiBody);
+    const apiKeyGate = apiStatus === 400 && /api key not valid/i.test(apiBody);
+    const apiDiag = `API=${apiStatus || "ERR"}${apiLocationBlocked ? " LOC-BLOCKED" : apiKeyGate ? " KEY-GATE" : ""}`;
+
+    // API 裁决优先：400（key 校验）= 位置已通过；403 location = 位置不支持
+    if (apiLocationBlocked) return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + apiDiag);
+    if (apiStatus === 429) return mediaResult("Gemini", "no", "", "连接受限或限流 · " + apiDiag);
+    if (apiKeyGate) {
+        // 位置通过。落地页若出现明确不支持文案（如 IP 被标记的特殊场景），以落地页为准
+        if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + verdict.diag + " " + apiDiag);
+        return mediaResult("Gemini", "yes", "", "解锁 · " + apiDiag);
     }
-    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + diag);
-    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流 · " + diag);
-    return mediaResult("Gemini", "unknown", "", "响应不足以确认 · " + diag);
+    // API 不可用时回退落地页信号（应用壳单独出现不再视为可用——两种节点均返回同款壳）
+    if (verdict.state === "region-blocked") return mediaResult("Gemini", "no", "", "所在国家/地区不支持 · " + verdict.diag + " " + apiDiag);
+    if (verdict.state === "blocked") return mediaResult("Gemini", "no", "", "连接受限或限流 · " + verdict.diag + " " + apiDiag);
+    if (verdict.state === "available") return mediaResult("Gemini", "yes", "", "解锁 · " + verdict.diag + " " + apiDiag);
+    return mediaResult("Gemini", "unknown", "", "响应不足以确认 · " + verdict.diag + " " + apiDiag);
 }
 
 function classifyGemini(response) {
@@ -624,10 +647,10 @@ function classifyGemini(response) {
     if (consent) return { state: "available", region, diag };
     // 5) 3xx 重定向到 Gemini 应用自身（如补斜杠）→ 可访问
     if (status >= 300 && status < 400 && /gemini\.google\.com/i.test(location) && !/not_available/i.test(location)) return { state: "available", region, diag };
-    // 6) 落地页是 Gemini 应用本体（标题含 Gemini，且不含地区不支持文案）→ 视为可访问
-    //    ⚠️ 已知风险：Google 对“不支持地区”的匿名请求也返回同款应用壳，静态 HTML 无 not-available 文案，
-    //    此规则会把不支持节点误判为可用；诊断指纹用于定位真实区分信号。
-    if (title || /gemini\.google\.com/i.test(body)) return { state: "available", region, diag };
+    // 6) ⚠️ 实测确认（r15 双节点对照）：Google 对“支持/不支持地区”的匿名请求都返回同款应用壳
+    //    （ST=200 TT=1 CMP=1 SIGN=1 完全一致），静态 HTML 无法区分 → 应用壳不能判可用，归入 unknown。
+    //    真正的可用裁决由 testGemini 的 API 端点判据（generativelanguage.googleapis.com）完成。
+    if (title || /gemini\.google\.com/i.test(body)) return { state: "unknown", region, diag };
     // 7) 其余情形（如未跟随重定向的 3xx、空响应等）：不足以判定，绝不误判
     return { state: "unknown", region, diag };
 }
